@@ -17,7 +17,10 @@
       font-family: 'Arial Rounded MT Bold', sans-serif;
       background-color: #fdf6ef;
       color: #333;
-      cursor: none;
+      cursor: default;
+      background-image: url('tile.png');
+      background-size: 80px 80px;
+      background-repeat: repeat;
     }
     .cursor-circle {
       position: fixed;
@@ -25,155 +28,84 @@
       left: 0;
       width: 40px;
       height: 40px;
-      background-color: rgba(255, 100, 100, 0.7);
       border-radius: 50%;
       pointer-events: none;
       mix-blend-mode: difference;
       transform: translate(-50%, -50%) scale(1);
-      transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+      transition: transform 0.2s ease;
       z-index: 1000;
-    }
-    .interactive:hover ~ .cursor-circle {
-      transform: translate(-50%, -50%) scale(0.5);
-    }
-    .interactive {
-      position: relative;
-      z-index: 2;
-    }
-    .screen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.6s ease-in-out;
     }
     .tile-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      padding: 1rem;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     .tile {
-      background-color: rgba(255,255,255,0.85);
-      padding: 0.8rem;
+      width: 240px;
+      height: 240px;
+      background-size: cover;
+      background-position: center;
       border-radius: 1rem;
-      text-align: center;
-      font-size: 1.1rem;
-      font-family: 'PeterP', sans-serif;
       cursor: pointer;
       transition: transform 0.2s ease;
-      line-height: 1.2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     .tile:hover {
       transform: scale(1.05);
     }
-    .content {
-      padding: 2rem;
-      color: #fff;
-      text-align: center;
-      background: rgba(0,0,0,0.4);
-      border-radius: 1rem;
-      max-width: 80%;
-      font-size: 1.1rem;
-    }
-    .nav-buttons {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-    .nav-buttons button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 1rem;
-      cursor: pointer;
-      background: #fdf175;
+    .interactive {
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
   <div class="cursor-circle" id="cursorCircle"></div>
 
-  <div id="home" class="screen" style="background-image: url('japanese-kitchen.jpg'); z-index: 2;">
-    <div class="tile-grid">
-      <div class="tile interactive" onclick="goTo('who')">О нас</div>
-      <div class="tile interactive" onclick="goTo('values')">Ценности</div>
-      <div class="tile interactive" onclick="goTo('life')">Как это устроено</div>
-      <div class="tile interactive" onclick="goTo('rules')">Правила и конфликты</div>
-    </div>
-  </div>
-
-  <div id="who" class="screen" style="background-image: url('soft-room.jpg'); transform: translateX(100%);">
-    <div class="content">
-      <h2>О нас</h2>
-      <p>Мы – сообщество семей...</p>
-      <div class="nav-buttons">
-        <button class="interactive" onclick="goTo('values')">Далее →</button>
-        <button class="interactive" onclick="goTo('home')">← Назад</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="values" class="screen" style="background-image: url('moti-couch.jpg'); transform: translateX(100%);">
-    <div class="content">
-      <h2>Ценности</h2>
-      <p>...</p>
-      <div class="nav-buttons">
-        <button class="interactive" onclick="goTo('life')">Далее →</button>
-        <button class="interactive" onclick="goTo('who')">← Назад</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="life" class="screen" style="background-image: url('playroom.jpg'); transform: translateX(100%);">
-    <div class="content">
-      <h2>Как это устроено</h2>
-      <p>...</p>
-      <div class="nav-buttons">
-        <button class="interactive" onclick="goTo('rules')">Далее →</button>
-        <button class="interactive" onclick="goTo('values')">← Назад</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="rules" class="screen" style="background-image: url('clean-space.jpg'); transform: translateX(100%);">
-    <div class="content">
-      <h2>Правила и конфликты</h2>
-      <p>...</p>
-      <div class="nav-buttons">
-        <button class="interactive" onclick="goTo('home')">На главную</button>
-        <button class="interactive" onclick="goTo('life')">← Назад</button>
-      </div>
-    </div>
+  <div class="tile-grid">
+    <div class="tile interactive" style="background-image: url('главная_large.png');" onclick="goTo('home')"></div>
+    <div class="tile interactive" style="background-image: url('о_нас_large.png');" onclick="goTo('who')"></div>
+    <div class="tile interactive" style="background-image: url('как_это_работает_large.png');" onclick="goTo('life')"></div>
+    <div class="tile interactive" style="background-image: url('наш_день_large.png');" onclick="goTo('day')"></div>
+    <div class="tile interactive" style="background-image: url('присоединиться_large.png');" onclick="goTo('join')"></div>
+    <div class="tile interactive" style="background-image: url('деньги_large.png');" onclick="goTo('money')"></div>
   </div>
 
   <script>
-    const screens = ['home', 'who', 'values', 'life', 'rules'];
-    function goTo(id) {
-      screens.forEach(screen => {
-        const el = document.getElementById(screen);
-        if (screen === id) {
-          el.style.transform = 'translateX(0)';
-          el.style.zIndex = 2;
-        } else {
-          el.style.transform = 'translateX(100%)';
-          el.style.zIndex = 1;
-        }
-      });
-    }
-
     const cursor = document.getElementById('cursorCircle');
+    const pastelColors = [
+      '#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9', '#BAE1FF',
+      '#D0A2F7', '#FFC4DD', '#FBE4C7', '#C7E9B0', '#B5D8FF',
+      '#F3C4FB', '#FFDAC1', '#E0BBE4', '#FFDFD3', '#C8E6C9',
+      '#AEDFF7', '#F6CED8', '#FFCCE5', '#D5AAFF', '#FFD8B1'
+    ];
+    const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+    cursor.style.backgroundColor = randomColor;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
     document.addEventListener('mousemove', e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.1;
+      cursorY += (mouseY - cursorY) * 0.1;
+      cursor.style.left = `${cursorX}px`;
+      cursor.style.top = `${cursorY}px`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
     document.querySelectorAll('.interactive').forEach(el => {
       el.addEventListener('mouseenter', () => {
