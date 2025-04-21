@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Семейный кооператив</title>
+  <style>
+    @font-face {
+      font-family: 'PeterP';
+      src: url('PeterP-Regular.otf') format('opentype');
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial Rounded MT Bold', sans-serif;
+      background-color: #fdf6ef;
+      color: #333;
+    }
+    .screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease-in-out;
+    }
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .tile {
+      background-color: rgba(255,255,255,0.85);
+      padding: 0.8rem;
+      border-radius: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-family: 'PeterP', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      line-height: 1.2;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+    }
+    .content {
+      padding: 2rem;
+      color: #fff;
+      text-align: center;
+      background: rgba(0,0,0,0.4);
+      border-radius: 1rem;
+      max-width: 80%;
+    }
+    .nav-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .nav-buttons button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      background: #fdf175;
+    }
+  </style>
+</head>
+<body>
+  <div id="home" class="screen" style="background-image: url('kitchen.jpg'); z-index: 2;">
+    <div class="tile-grid">
+      <div class="tile" onclick="goTo('values')">Ценности</div>
+      <div class="tile" onclick="goTo('about')">Мы</div>
+      <div class="tile" onclick="goTo('day')">Как проходит день</div>
+      <div class="tile" onclick="goTo('roles')">Форматы участия</div>
+      <div class="tile" onclick="goTo('money')">Деньги</div>
+      <div class="tile" onclick="goTo('contact')">Контакты</div>
+    </div>
+  </div>
+
+  <div id="values" class="screen" style="background-image: url('livingroom1.jpg'); transform: translateX(100%);">
+    <div class="content">
+      <h2>Наши ценности</h2>
+      <p>🌱 Свобода — без обязаловки и проверок<br>
+         💛 Бережность — к чувствам, телу и границам<br>
+         🌀 Горизонтальность — никто не выше, не ниже<br>
+         👣 Присутствие — взрослые рядом, не над<br>
+         🔍 Прозрачность — в решениях и финансах</p>
+      <div class="nav-buttons">
+        <button onclick="goTo('about')">Далее →</button>
+        <button onclick="goTo('home')">← Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="screen" style="background-image: url('livingroom2.jpg'); transform: translateX(100%);">
+    <div class="content">
+      <h2>Кто мы</h2>
+      <p>Семейный кооператив — это пространство, где дети и взрослые растут вместе, договариваются, ошибаются, заботятся, и остаются собой.</p>
+      <div class="nav-buttons">
+        <button onclick="goTo('day')">Далее →</button>
+        <button onclick="goTo('values')">← Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Добавить остальные блоки аналогично: day, roles, money, contact -->
+
+  <script>
+    const screens = ['home', 'values', 'about', 'day', 'roles', 'money', 'contact'];
+    function goTo(id) {
+      screens.forEach(screen => {
+        const el = document.getElementById(screen);
+        if (screen === id) {
+          el.style.transform = 'translateX(0)';
+          el.style.zIndex = 2;
+        } else {
+          el.style.transform = 'translateX(100%)';
+          el.style.zIndex = 1;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
