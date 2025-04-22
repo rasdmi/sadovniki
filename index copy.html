@@ -3,86 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Семейный кооператив</title>
+  <title>Семейный кооператив Шляпа</title>
   <style>
     @font-face {
-      font-family: 'PeterP';
-      src: url('PeterP-Regular.otf') format('opentype');
+      font-family: 'HatFont';
+      src: url('17550.ttf') format('truetype');
     }
-    html, body {
+    @font-face {
+      font-family: 'Assya';
+      src: url('Assya Font Official.otf') format('opentype');
+    }
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #000;
       overflow: hidden;
-      font-family: 'Arial Rounded MT Bold', sans-serif;
-      background-color: #fdf6ef;
-      color: #333;
-      cursor: default;
     }
-    .cursor-circle {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      gap: 20px;
+    }
+    .title {
+      font-family: 'Assya', cursive;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-transform: lowercase;
+    }
+    .main-description {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+    .button {
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      border: 2px solid black;
+      border-radius: 20px;
+      cursor: pointer;
+      background: white;
+      transition: background 0.2s ease-in-out, transform 0.3s ease;
+    }
+    .button:hover {
+      transform: scale(1.05);
+    }
+    .nav-footer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      pointer-events: none;
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%) scale(1);
-      transition: transform 0.2s ease;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       z-index: 1000;
     }
-    .interactive:hover ~ .cursor-circle {
-      transform: translate(-50%, -50%) scale(0.5);
+    .section {
+      display: none;
+      padding: 100px 20px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .interactive {
-      position: relative;
-      z-index: 2;
+    .section.active {
+      display: block;
+    }
+    .contacts-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 15px 25px;
+      font-size: 2.4rem;
+      background: white;
+      z-index: 999;
+    }
+    .hat {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      font-size: 3rem;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <div class="cursor-circle" id="cursorCircle"></div>
+  <div class="container" id="home">
+    <div class="title">семейный кооператив шляпа</div>
+    <div class="main-description">Эгалитарное сообщество семей.
+Вместе тусим и присматриваем за детьми.</div>
+  </div>
 
-  <!-- остальная часть сайта остаётся без изменений -->
+  <div class="section" id="about">
+    <h1>О нас</h1>
+    <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время.</p>
+    <p>Шляпа – это место, где дети и взрослые относятся друг к другу бережно и уважительно. Взрослые заботятся о физической и эмоциональной безопасности детей, не имея скрытых намерений, без манипуляций, обмана или насилия.</p>
+    <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки Шляпы – равны в принятии любых решений.</p>
+    <p>Среди хозя:ек действует принцип “от каждо:й по способностям, каждо:й по потребностям”. Мы искренне стремимся вкладываться в сообщество, а сообщество прозрачно распределяет ресурсы.</p>
+    <p>Семьи, которые хотят только приводить своих детей в Шляпе, но не хотят участвовать в кооперативе, имеют статус гость:ий. Они участвуют в наших днях на коммерческой основе.</p>
+  </div>
+
+  <div class="section" id="how">
+    <h1>Как это работает</h1>
+    <p>Главным органом принятия решений в Шляпе является Общий сбор. Решения принимаются по принципам прямой демократии и, по возможности, на основе консенсуса. Все люди в Шляпе руководствуются Правилами кооператива и принципами, отраженными в Конституции.</p>
+    <p>Конфликты разрешаются через медиацию, а если не удается – обсуждаются на Общем сборе. Сообщество помогает урегулировать, а не наказывает. У нас нет начальства, нет клиентов, и никто никого не учит жизни. Только бережное сообщество равных.</p>
+  </div>
+
+  <div class="section" id="day">
+    <h1>Наш день</h1>
+    <p>У нас нет расписания. Утром встречаемся и решаем, чем заняться. Кто-то лепит, кто-то варит суп, кто-то идет гулять, а кто-то строит дом из картона. Академические занятия не важнее ковыряния в носу. Все дела равноценны.</p>
+  </div>
+
+  <div class="section" id="join">
+    <h1>Присоединиться</h1>
+    <p>Приходите познакомиться. Расскажем, покажем. Совпадение ценностей — главное. Можно стать хозяй:кой и участвовать во всём, а можно быть гость:ей и водить ребёнка.</p>
+  </div>
+
+  <div class="section" id="money">
+    <h1>Деньги</h1>
+    <p>Шляпа — не коммерция. Взносы хозяй:к по возможностям, гостьи оплачивают участие. Всё идет в общий бюджет. Каждый месяц создаем фонд запросов и распределяем по решению кооператива.</p>
+  </div>
+
+  <div class="nav-footer">
+    <div class="button" onclick="showSection('home')">Главная</div>
+    <div class="button" onclick="showSection('about')">О нас</div>
+    <div class="button" onclick="showSection('how')">Как это работает</div>
+    <div class="button" onclick="showSection('day')">Наш день</div>
+    <div class="button" onclick="showSection('join')">Присоединиться</div>
+    <div class="button" onclick="showSection('money')">Деньги</div>
+  </div>
+
+  <div class="contacts-box">
+    тг Ада @ada_t Дима @rasdmi +79161558202
+  </div>
+
+  <div class="hat" id="hat">🎩</div>
 
   <script>
-    const cursor = document.getElementById('cursorCircle');
-    const pastelColors = [
-      '#AA1803', '#BD613C', '#F1BAA1', '#BCAF4D', '#6D8C00',
-      '#806491', '#B9848C', '#2F70AF', '#C8D2D1', '#68904D',
-      '#EE9B01', '#DA6A00', '#dc97a9', '#f2cb7c', '#edaf88',
-      '#d3bfb6', '#addad7', '#f7f2f9', '#d6e8f6', '#e4bc98'
-    ];
-    const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-    cursor.style.backgroundColor = randomColor;
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelector('.container').style.display = id === 'home' ? 'flex' : 'none';
+      const next = document.getElementById(id);
+      if (next) {
+        next.classList.add('active');
+      }
+    }
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    const hat = document.getElementById('hat');
+    let pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let vel = { x: 0, y: 0 };
 
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    document.addEventListener('mousemove', (e) => {
+      let dx = e.clientX - pos.x;
+      let dy = e.clientY - pos.y;
+      vel.x += dx * 0.01;
+      vel.y += dy * 0.01;
     });
 
-    function animateCursor() {
-      cursorX += (mouseX - cursorX) * 0.1;
-      cursorY += (mouseY - cursorY) * 0.1;
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-      requestAnimationFrame(animateCursor);
+    function animateHat() {
+      pos.x += vel.x;
+      pos.y += vel.y;
+      vel.x *= 0.9;
+      vel.y *= 0.9;
+      if (pos.x < 0) { pos.x = 0; vel.x *= -0.8; }
+      if (pos.y < 0) { pos.y = 0; vel.y *= -0.8; }
+      if (pos.x > window.innerWidth - 60) { pos.x = window.innerWidth - 60; vel.x *= -0.8; }
+      if (pos.y > window.innerHeight - 60) { pos.y = window.innerHeight - 60; vel.y *= -0.8; }
+      hat.style.left = pos.x + 'px';
+      hat.style.top = pos.y + 'px';
+      requestAnimationFrame(animateHat);
     }
-    animateCursor();
+    animateHat();
 
-    document.querySelectorAll('.interactive').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(0.5)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
+    const colors = ["#FADADD", "#FFEFD5", "#E6E6FA", "#FFFACD", "#D1EEEE", "#FFDAB9", "#E0FFFF", "#F0FFF0", "#F5F5DC", "#FFF0F5", "#F0F8FF", "#E6E6FA", "#FFE4E1", "#F5F5F5", "#FAFAD2", "#F5DEB3", "#FFF5EE", "#F8F8FF", "#FFF8DC", "#F0FFFF", "#FBE9E7", "#ECEFF1", "#FFF9C4", "#E1F5FE", "#F3E5F5", "#F1F8E9", "#E8F5E9", "#FCE4EC", "#E0F2F1", "#E3F2FD"];
+    const pick = () => colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = pick();
+    document.querySelectorAll('.section, .button, .contacts-box').forEach(el => {
+      el.style.backgroundColor = pick();
     });
   </script>
 </body>
