@@ -18,18 +18,7 @@
       font-family: 'Assya';
       src: url('AssyaFont.otf') format('opentype');
     }
-
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      filter: blur(8px) brightness(1.2);
-    }
-
+  
     .glass {
       position: relative;
       z-index: 1;
@@ -103,11 +92,6 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="train-window.mp4" type="video/mp4">
-    Ваш браузер не поддерживает тег video.
-  </video>
-
   <div class="glass">
     <div class="nav">
       <div class="nav-item">Главная</div>

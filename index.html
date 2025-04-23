@@ -5,29 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Семейный кооператив Шляпа</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Assya', cursive;
-      background: white;
-    }
-
     @font-face {
       font-family: 'Assya';
       src: url('AssyaFont.otf') format('opentype');
     }
 
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      filter: blur(8px) brightness(1.2);
+    @font-face {
+      font-family: 'Neucha';
+      src: url('Neucha-Regular.ttf') format('truetype');
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Assya', cursive;
+      background: white;
+      overflow: hidden;
     }
 
     .glass {
@@ -38,8 +32,32 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       color: #000;
+    }
+
+    .title {
+      font-size: 3rem;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .center-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .center-banner-text {
+      font-size: 2rem;
+      max-width: 60vw;
+      text-align: center;
+    }
+
+    .center-banner img {
+      height: 150px;
     }
 
     .nav {
@@ -60,35 +78,35 @@
       backdrop-filter: blur(2px);
       cursor: pointer;
       user-select: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease;
     }
 
     .nav-item:hover {
       transform: scale(1.05);
     }
 
-    .fog-text {
-      font-size: 1.6rem;
+    .section {
+      display: none;
       padding: 20px;
-      margin: auto;
-      text-align: center;
-      color: #000;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      max-width: 90vw;
+      font-family: 'Neucha', sans-serif;
+      font-size: 1.2rem;
+      animation: fadeIn 0.5s ease forwards;
     }
 
-    .animation-zone {
+    .section.active {
+      display: block;
+    }
+
+    .ada-img {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 100px;
     }
 
-    .animation-img {
-      height: 160px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     @media (max-width: 768px) {
@@ -96,36 +114,70 @@
         font-size: 1rem;
         padding: 8px 15px;
       }
-      .animation-img {
+      .center-banner img {
         height: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="train-window.mp4" type="video/mp4">
-    Ваш браузер не поддерживает тег video.
-  </video>
-
   <div class="glass">
-    <div class="nav">
-      <div class="nav-item">Главная</div>
-      <div class="nav-item">О нас</div>
-      <div class="nav-item">Как это работает</div>
-      <div class="nav-item">Наш день</div>
-      <div class="nav-item">Присоединиться</div>
-      <div class="nav-item">Деньги</div>
+    <div class="title">Семейный кооператив Шляпа</div>
+
+    <div class="center-banner">
+      <img src="boy.png" alt="мальчик">
+      <div class="center-banner-text">Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</div>
+      <img src="girl.png" alt="девочка">
     </div>
 
-    <div class="fog-text">
-      Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.
+    <div class="nav" id="nav">
+      <div class="nav-item" data-index="0">Главная</div>
+      <div class="nav-item" data-index="1">О нас</div>
+      <div class="nav-item" data-index="2">Наш день</div>
+      <div class="nav-item" data-index="3">Как это работает</div>
+      <div class="nav-item" data-index="4">Присоединиться</div>
+      <div class="nav-item" data-index="5">Деньги</div>
     </div>
 
-    <div class="animation-zone">
-      <img src="boy.png" class="animation-img" alt="мальчик">
-      <img src="girl.png" class="animation-img" alt="девочка">
+    <div id="sections">
+      <div class="section active" id="section-0"></div>
+
+      <div class="section" id="section-1">
+        <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время.</p>
+        <p>Шляпа – это место, где дети и взрослые относятся друг к другу бережно и уважительно. Взрослые заботятся о физической и эмоциональной безопасности детей, не имея скрытых намерений, без манипуляций, обмана или насилия.</p>
+        <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки шляпы – равны в принятии любых решений.</p>
+        <p>Среди хозя:ек действует принцип “от каждо:й по способностям, каждо:й по потребностям”. Мы искренне стремимся вкладываться в сообщество, а сообщество прозрачно распределяет ресурсы.</p>
+        <p>Семьи, которые хотят только приводить своих детей в шляпу, но не хотят участвовать в кооперативе, имеют статус гость:ий. Они участвуют в наших днях на коммерческой основе.</p>
+        <img src="ada.png" alt="Ада" class="ada-img">
+      </div>
+
+      <div class="section" id="section-2"></div>
+      <div class="section" id="section-3"></div>
+      <div class="section" id="section-4"></div>
+      <div class="section" id="section-5"></div>
     </div>
   </div>
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section');
+    let currentIndex = 0;
+
+    navItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        if (index === currentIndex) return;
+
+        sections[currentIndex].classList.remove('active');
+        sections[currentIndex].style.animation = 'none';
+
+        const direction = index > currentIndex ? '100px' : '-100px';
+        sections[index].style.animation = `fadeIn 0.5s ease forwards`;
+        sections[index].style.setProperty('--direction', direction);
+        sections[index].classList.add('active');
+
+        currentIndex = index;
+      });
+    });
+  </script>
 </body>
 </html>
