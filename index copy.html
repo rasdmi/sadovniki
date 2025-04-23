@@ -5,217 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Семейный кооператив Шляпа</title>
   <style>
-    @font-face {
-      font-family: 'HatFont';
-      src: url('17550.ttf') format('truetype');
-    }
-    @font-face {
-      font-family: 'Assya';
-      src: url('Assya Font Official.otf') format('opentype');
-    }
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: #000;
+      height: 100%;
       overflow: hidden;
+      font-family: 'Assya', cursive;
+      background: black;
     }
-    .container {
+
+    @font-face {
+      font-family: 'Assya';
+      src: url('AssyaFont.otf') format('opentype');
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: blur(8px) brightness(1.2);
+    }
+
+    .glass {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+      color: #000;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-      gap: 20px;
+      font-weight: bold;
     }
-    .title {
-      font-family: 'Assya', cursive;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      text-transform: lowercase;
-    }
-    .main-description {
+
+    .nav-item {
       font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      white-space: pre-line;
-    }
-    .button {
-      padding: 20px 40px;
-      font-size: 1.5rem;
+      padding: 10px 20px;
       border: 2px solid black;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+      backdrop-filter: blur(2px);
       cursor: pointer;
-      background: white;
-      transition: background 0.2s ease-in-out, transform 0.3s ease;
+      user-select: none;
+      transition: transform 0.2s ease;
     }
-    .button:hover {
+
+    .nav-item:hover {
       transform: scale(1.05);
     }
-    .nav-footer {
-      position: fixed;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      z-index: 1000;
+
+    .fog-text {
+      font-size: 1.6rem;
+      padding: 20px;
+      margin: auto;
+      text-align: center;
+      color: #000;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      max-width: 90vw;
     }
-    .section {
-      display: none;
-      padding: 100px 20px 80px;
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.25rem;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .section.active {
-      display: block;
-    }
-    .contacts-box {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      border: 2px solid black;
-      border-radius: 20px;
-      padding: 15px 25px;
-      font-size: 2.4rem;
-      background: white;
-      z-index: 999;
-    }
-    .hat {
+
+    .animation-zone {
       position: absolute;
-      top: 40%;
-      left: 50%;
-      font-size: 3rem;
-      user-select: none;
-    }
-    .boy-img {
-      position: fixed;
-      bottom: 10px;
-      left: 30px;
+      bottom: 0;
+      width: 100%;
       height: 200px;
-      z-index: 998;
+      pointer-events: none;
     }
-    .girl-img {
-      position: fixed;
-      bottom: 10px;
-      right: 150px;
-      height: 200px;
-      z-index: 998;
+
+    .character {
+      position: absolute;
+      height: 140px;
+      pointer-events: none;
+    }
+
+    .ball {
+      position: absolute;
+      height: 80px;
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .nav-item {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+      .character {
+        height: 100px;
+      }
+      .ball {
+        height: 60px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container" id="home">
-    <div class="title">семейный кооператив шляпа</div>
-    <div class="main-description">Эгалитарное сообщество семей.
-Вместе тусим и присматриваем за детьми.</div>
-  </div>
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="train-window.mp4" type="video/mp4">
+    Ваш браузер не поддерживает тег video.
+  </video>
 
-  <div class="section" id="about">
-    <h1>О нас</h1>
-    <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время.</p>
-    <p>Шляпа – это место, где дети и взрослые относятся друг к другу бережно и уважительно. Взрослые заботятся о физической и эмоциональной безопасности детей, не имея скрытых намерений, без манипуляций, обмана или насилия.</p>
-    <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки шляпы – равны в принятии любых решений.</p>
-    <p>Среди хозя:ек действует принцип “от каждо:й по способностям, каждо:й по потребностям”. Мы искренне стремимся вкладываться в сообщество, а сообщество прозрачно распределяет ресурсы.</p>
-    <p>Семьи, которые хотят только приводить своих детей в шляпу, но не хотят участвовать в кооперативе, имеют статус гость:ий. Они участвуют в наших днях на коммерческой основе.</p>
-  </div>
+  <div class="glass">
+    <div class="nav">
+      <div class="nav-item">Главная</div>
+      <div class="nav-item">О нас</div>
+      <div class="nav-item">Как это работает</div>
+      <div class="nav-item">Наш день</div>
+      <div class="nav-item">Присоединиться</div>
+      <div class="nav-item">Деньги</div>
+    </div>
 
-  <div class="section" id="how">
-    <h1>Как это работает</h1>
-    <p><strong>Равенство.</strong> Кажд:ая из нас имеет равный голос в принятии решений кооператива.</p>
-    <p><strong>Свобода.</strong> Каждый человек может заниматься чем угодно, если это не пересекает чьих-либо границ.</p>
-    <p><strong>Ненасилие.</strong> Мы уважаем каждую личность и общаемся без манипуляций. Обратная связь возможна по запросу и бережно.</p>
-    <p><strong>Ответственность.</strong> Кажд:ая из нас ответственн:а за свои действия или бездействие.</p>
-    <p><strong>От каждо:й по способностям.</strong> Хозяй:ка вносит вклад по своим возможностям: временем, силами, деньгами.</p>
-    <p><strong>Каждо:й по потребностям.</strong> Кооператив слышит и старается удовлетворять потребности хозяй:к.</p>
-  </div>
+    <div class="fog-text">
+      Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.
+    </div>
 
-  <div class="section" id="day">
-    <h1>Наш день</h1>
-    <p>У нас нет фиксированного расписания. Мы встречаемся утром и решаем, чем займёмся. Обсуждаем дела и проблемы.</p>
-    <p>Кто-то лепит из глины, кто-то мастерит, кто-то идёт гулять или готовит обед. Все дела — равноценны.</p>
-    <p>Академическая деятельность не важнее игр или творчества. Люди занимаются тем, что интересно.</p>
+    <div class="animation-zone">
+      <img src="sasha_run.png" id="sasha" class="character" alt="Саша">
+      <img src="ball.png" id="ball" class="ball" alt="Мяч">
+    </div>
   </div>
-
-  <div class="section" id="join">
-    <h1>Присоединиться</h1>
-    <p>Главный орган — Общий сбор. Решения принимаются напрямую. Стремимся к консенсусу.</p>
-    <p>Если возникает конфликт, сначала пробуем медиацию. Если не помогает — обсуждаем на собрании. Цель — не наказание, а разрешение.</p>
-  </div>
-
-  <div class="section" id="money">
-    <h1>Деньги</h1>
-    <p>Шляпа — не коммерция. Мы получаем столько, сколько нужно.</p>
-    <p>Взносы хозяе:к по возможностям, гостьи платят. Деньги идут в общий бюджет.</p>
-    <p>В конце месяца формируем фонд запросов и распределяем его между хозяй:ками.</p>
-  </div>
-
-  <div class="nav-footer">
-    <div class="button" onclick="showSection('home')">Главная</div>
-    <div class="button" onclick="showSection('about')">О нас</div>
-    <div class="button" onclick="showSection('how')">Как это работает</div>
-    <div class="button" onclick="showSection('day')">Наш день</div>
-    <div class="button" onclick="showSection('join')">Присоединиться</div>
-    <div class="button" onclick="showSection('money')">Деньги</div>
-  </div>
-
-  <div class="contacts-box">
-    тг Ада @ada_t Дима @rasdmi +79161558202
-  </div>
-
-  <div class="hat" id="hat">🎩</div>
-  <img src="1.png" class="boy-img" alt="мальчик">
-  <img src="2.png" class="girl-img" alt="девочка">
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.querySelector('.container').style.display = id === 'home' ? 'flex' : 'none';
-      const next = document.getElementById(id);
-      if (next) {
-        next.classList.add('active');
+    const sasha = document.getElementById('sasha');
+    const ball = document.getElementById('ball');
+    let ballFollow = true;
+
+    document.addEventListener('mousemove', (e) => {
+      if (ballFollow) {
+        ball.style.left = `${e.clientX - 40}px`;
+        ball.style.top = `${e.clientY - 40}px`;
+      }
+    });
+
+    let sashaX = 0;
+    let targetX = 200;
+
+    function moveSasha() {
+      const ballRect = ball.getBoundingClientRect();
+      targetX = ballRect.left - 80;
+
+      if (Math.abs(sashaX - targetX) < 10) {
+        ballFollow = false;
+        kickBall(ball);
+      } else {
+        sashaX += (targetX - sashaX) * 0.05;
+        sasha.style.left = `${sashaX}px`;
+        sasha.style.bottom = '0px';
+        requestAnimationFrame(moveSasha);
       }
     }
 
-    const hat = document.getElementById('hat');
-    let pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    let vel = { x: 0, y: 0 };
+    function kickBall(ball) {
+      let angle = Math.random() * Math.PI - Math.PI / 2;
+      let vx = Math.cos(angle) * 10;
+      let vy = -Math.abs(Math.sin(angle)) * 10;
+      let x = ball.offsetLeft;
+      let y = ball.offsetTop;
 
-    document.addEventListener('mousemove', (e) => {
-      let dx = e.clientX - pos.x;
-      let dy = e.clientY - pos.y;
-      vel.x += dx * 0.01;
-      vel.y += dy * 0.01;
-    });
-
-    function animateHat() {
-      pos.x += vel.x;
-      pos.y += vel.y;
-      vel.x *= 0.9;
-      vel.y *= 0.9;
-      if (pos.x < 0) { pos.x = 0; vel.x *= -0.8; }
-      if (pos.y < 0) { pos.y = 0; vel.y *= -0.8; }
-      if (pos.x > window.innerWidth - 60) { pos.x = window.innerWidth - 60; vel.x *= -0.8; }
-      if (pos.y > window.innerHeight - 60) { pos.y = window.innerHeight - 60; vel.y *= -0.8; }
-      hat.style.left = pos.x + 'px';
-      hat.style.top = pos.y + 'px';
-      requestAnimationFrame(animateHat);
+      function animate() {
+        x += vx;
+        y += vy;
+        vy += 0.5;
+        ball.style.left = `${x}px`;
+        ball.style.top = `${y}px`;
+        if (y < window.innerHeight) {
+          requestAnimationFrame(animate);
+        }
+      }
+      animate();
     }
-    animateHat();
 
-    const colors = ["#FADADD", "#FFEFD5", "#E6E6FA", "#FFFACD", "#D1EEEE", "#FFDAB9", "#E0FFFF", "#F0FFF0", "#F5F5DC", "#FFF0F5", "#F0F8FF", "#E6E6FA", "#FFE4E1", "#F5F5F5", "#FAFAD2", "#F5DEB3", "#FFF5EE", "#F8F8FF", "#FFF8DC", "#F0FFFF", "#FBE9E7", "#ECEFF1", "#FFF9C4", "#E1F5FE", "#F3E5F5", "#F1F8E9", "#E8F5E9", "#FCE4EC", "#E0F2F1", "#E3F2FD"];
-    const pick = () => colors[Math.floor(Math.random() * colors.length)];
-    document.body.style.backgroundColor = pick();
-    document.querySelectorAll('.section, .button, .contacts-box').forEach(el => {
-      el.style.backgroundColor = pick();
-    });
+    moveSasha();
   </script>
 </body>
 </html>
