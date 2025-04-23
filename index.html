@@ -19,14 +19,15 @@
       font-family: Arial, sans-serif;
       background-color: white;
       color: #000;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
       text-align: center;
       gap: 20px;
     }
@@ -43,8 +44,8 @@
       white-space: pre-line;
     }
     .button {
-      padding: 20px 40px;
-      font-size: 1.5rem;
+      padding: 15px 25px;
+      font-size: 1.2rem;
       border: 2px solid black;
       border-radius: 20px;
       cursor: pointer;
@@ -61,15 +62,26 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
       z-index: 1000;
+    }
+    @media (max-width: 768px) {
+      .nav-footer {
+        top: auto;
+        bottom: 10px;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
     .section {
       display: none;
-      padding: 100px 20px 80px;
+      padding: 80px 20px 60px;
       max-width: 900px;
       margin: 0 auto;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -83,31 +95,43 @@
       right: 20px;
       border: 2px solid black;
       border-radius: 20px;
-      padding: 15px 25px;
-      font-size: 2.4rem;
+      padding: 10px 15px;
+      font-size: 1.4rem;
       background: white;
       z-index: 999;
+    }
+    @media (max-width: 768px) {
+      .contacts-box {
+        font-size: 1rem;
+        padding: 8px 12px;
+      }
     }
     .hat {
       position: absolute;
       top: 40%;
       left: 50%;
-      font-size: 3rem;
+      font-size: 2.5rem;
       user-select: none;
     }
     .boy-img {
       position: fixed;
       bottom: 10px;
-      left: 30px;
-      height: 200px;
+      left: 10px;
+      height: 140px;
       z-index: 998;
     }
     .girl-img {
       position: fixed;
       bottom: 10px;
-      right: 150px;
-      height: 200px;
+      right: 10px;
+      height: 140px;
       z-index: 998;
+    }
+    @media (max-width: 480px) {
+      .boy-img,
+      .girl-img {
+        height: 100px;
+      }
     }
   </style>
 </head>
