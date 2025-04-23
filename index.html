@@ -10,8 +10,13 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      font-family: Arial, sans-serif;
+      font-family: 'Assya', cursive;
       background: black;
+    }
+
+    @font-face {
+      font-family: 'Assya';
+      src: url('Assya Font Official.otf') format('opentype');
     }
 
     .background-video {
@@ -55,6 +60,11 @@
       backdrop-filter: blur(2px);
       cursor: pointer;
       user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item:hover {
+      transform: scale(1.05);
     }
 
     .fog-text {
@@ -113,8 +123,8 @@
     </div>
 
     <div class="animation-zone">
-      <img src="/mnt/data/1.png" class="animation-img" alt="мальчик">
-      <img src="/mnt/data/2.png" class="animation-img" alt="девочка">
+      <img src="boy.png" class="animation-img" alt="мальчик">
+      <img src="girl.png" class="animation-img" alt="девочка">
     </div>
   </div>
 </body>
