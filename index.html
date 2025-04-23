@@ -32,39 +32,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      color: #000;
-    }
-
-    .title {
-      font-size: 3rem;
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .center-banner {
-      display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      gap: 20px;
-    }
-
-    .center-banner-text {
-      font-size: 2rem;
-      max-width: 60vw;
-      text-align: center;
-    }
-
-    .center-banner img {
-      height: 150px;
+      color: #000;
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
-      padding: 20px;
+      padding: 10px;
       justify-content: center;
       font-weight: bold;
     }
@@ -83,6 +59,31 @@
 
     .nav-item:hover {
       transform: scale(1.05);
+    }
+
+    .title {
+      font-size: 3rem;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .center-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+      gap: 30px;
+    }
+
+    .center-banner-text {
+      font-size: 2.4rem;
+      max-width: 60vw;
+      text-align: center;
+      font-family: 'Assya', cursive;
+    }
+
+    .center-banner img {
+      height: 200px;
     }
 
     .section {
@@ -115,21 +116,13 @@
         padding: 8px 15px;
       }
       .center-banner img {
-        height: 100px;
+        height: 120px;
       }
     }
   </style>
 </head>
 <body>
   <div class="glass">
-    <div class="title">Семейный кооператив Шляпа</div>
-
-    <div class="center-banner">
-      <img src="boy.png" alt="мальчик">
-      <div class="center-banner-text">Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</div>
-      <img src="girl.png" alt="девочка">
-    </div>
-
     <div class="nav" id="nav">
       <div class="nav-item" data-index="0">Главная</div>
       <div class="nav-item" data-index="1">О нас</div>
@@ -137,6 +130,14 @@
       <div class="nav-item" data-index="3">Как это работает</div>
       <div class="nav-item" data-index="4">Присоединиться</div>
       <div class="nav-item" data-index="5">Деньги</div>
+    </div>
+
+    <div class="title">Семейный кооператив Шляпа</div>
+
+    <div class="center-banner">
+      <img src="boy.png" alt="мальчик">
+      <div class="center-banner-text">Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</div>
+      <img src="girl.png" alt="девочка">
     </div>
 
     <div id="sections">
