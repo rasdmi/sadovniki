@@ -11,7 +11,7 @@
       height: 100%;
       overflow: hidden;
       font-family: 'Assya', cursive;
-      background: black;
+      background: black url('fallback.jpg') center center / cover no-repeat;
     }
 
     @font-face {
@@ -103,7 +103,7 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop class="background-video">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="train-window.mp4" type="video/mp4">
     Ваш браузер не поддерживает тег video.
   </video>
