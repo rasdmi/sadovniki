@@ -71,16 +71,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 20px;
       margin-top: 140px;
+      padding: 0 20px;
     }
 
     .center-banner-text {
       font-size: 1.8rem;
-      white-space: nowrap;
       text-align: center;
       font-family: 'Assya', cursive;
       font-weight: normal;
+      max-width: 90vw;
     }
 
     .center-banner img.boy {
@@ -136,19 +138,27 @@
       height: 200px;
     }
 
+    #join {
+      padding-bottom: 30vh;
+    }
+
     @media (max-width: 768px) {
       .nav-item {
         font-size: 1rem;
         padding: 8px 15px;
       }
+      .center-banner {
+        flex-direction: column;
+      }
       .center-banner img.boy {
-        height: 120px;
+        height: 100px;
       }
       .center-banner img.girl {
-        height: 110px;
+        height: 100px;
       }
       .center-banner-text {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        max-width: 90vw;
       }
       .scene-bottom img.sasha {
         height: 90px;
@@ -167,9 +177,13 @@
       .ada-img {
         height: 100px;
       }
+      #join {
+        padding-bottom: 40vh;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="nav">
     <div class="nav-item" onclick="document.getElementById('main').scrollIntoView()">Главная</div>
