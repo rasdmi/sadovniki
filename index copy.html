@@ -5,50 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Семейный кооператив Шляпа</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Assya', cursive;
-      background: white;
-    }
-
     @font-face {
       font-family: 'Assya';
       src: url('AssyaFont.otf') format('opentype');
     }
 
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      filter: blur(8px) brightness(1.2);
-    }
-
-    .glass {
-      position: relative;
-      z-index: 1;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      color: #000;
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Assya', cursive;
+      font-weight: normal;
+      background: white;
+      scroll-behavior: smooth;
     }
 
     .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
-      padding: 20px;
+      padding: 10px;
       justify-content: center;
-      font-weight: bold;
+      font-weight: normal;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
     }
 
     .nav-item {
@@ -57,38 +39,95 @@
       border: 2px solid black;
       background: rgba(255, 255, 255, 0.6);
       border-radius: 10px;
-      backdrop-filter: blur(2px);
       cursor: pointer;
       user-select: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease;
+      font-weight: normal;
     }
 
     .nav-item:hover {
       transform: scale(1.05);
     }
 
-    .fog-text {
-      font-size: 1.6rem;
-      padding: 20px;
-      margin: auto;
+    section {
+      padding: 60px 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .title {
+      font-size: 3rem;
       text-align: center;
-      color: #000;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      max-width: 90vw;
+      margin: 40px 0 20px;
+      font-family: 'Assya', cursive;
     }
 
-    .animation-zone {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+    .center-banner {
       display: flex;
-      justify-content: space-between;
-      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 140px;
     }
 
-    .animation-img {
-      height: 160px;
+    .center-banner-text {
+      font-size: 1.8rem;
+      white-space: nowrap;
+      text-align: center;
+      font-family: 'Assya', cursive;
+    }
+
+    .center-banner img.boy {
+      height: 252px;
+    }
+
+    .center-banner img.girl {
+      height: 234px;
+    }
+
+    .scene-bottom {
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-top: 80px;
+      padding: 0 5vw;
+    }
+
+    .scene-bottom img.sasha {
+      height: 128px;
+    }
+
+    .scene-bottom img.fr {
+      height: 124px;
+      margin-bottom: -20px;
+    }
+
+    .scene-bottom img.ball {
+      height: 92px;
+      position: absolute;
+      bottom: -46px;
+      left: 75%;
+      transform: translateX(-50%);
+    }
+
+    .neucha {
+      font-family: 'Assya', cursive;
+      font-size: 2.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: normal;
+    }
+
+    h2, h3 {
+      font-family: 'Assya', cursive;
+      font-weight: normal;
+    }
+
+    .ada-img {
+      display: block;
+      margin: 60px auto 0;
+      height: 200px;
     }
 
     @media (max-width: 768px) {
@@ -96,36 +135,121 @@
         font-size: 1rem;
         padding: 8px 15px;
       }
-      .animation-img {
+      .center-banner img.boy {
+        height: 120px;
+      }
+      .center-banner img.girl {
+        height: 110px;
+      }
+      .center-banner-text {
+        font-size: 1.2rem;
+      }
+      .scene-bottom img.sasha {
+        height: 90px;
+      }
+      .scene-bottom img.fr {
+        height: 80px;
+      }
+      .scene-bottom img.ball {
+        height: 70px;
+        bottom: -35px;
+      }
+      .neucha {
+        font-size: 1.2rem;
+      }
+      .ada-img {
         height: 100px;
       }
     }
   </style>
 </head>
+
 <body>
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="train-window.mp4" type="video/mp4">
-    Ваш браузер не поддерживает тег video.
-  </video>
-
-  <div class="glass">
-    <div class="nav">
-      <div class="nav-item">Главная</div>
-      <div class="nav-item">О нас</div>
-      <div class="nav-item">Как это работает</div>
-      <div class="nav-item">Наш день</div>
-      <div class="nav-item">Присоединиться</div>
-      <div class="nav-item">Деньги</div>
-    </div>
-
-    <div class="fog-text">
-      Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.
-    </div>
-
-    <div class="animation-zone">
-      <img src="boy.png" class="animation-img" alt="мальчик">
-      <img src="girl.png" class="animation-img" alt="девочка">
-    </div>
+  <div class="nav">
+    <div class="nav-item" onclick="document.getElementById('main').scrollIntoView()">Главная</div>
+    <div class="nav-item" onclick="document.getElementById('about').scrollIntoView()">О нас</div>
+    <div class="nav-item" onclick="document.getElementById('day').scrollIntoView()">Наш день</div>
+    <div class="nav-item" onclick="document.getElementById('how').scrollIntoView()">Как это работает</div>
+    <div class="nav-item" onclick="document.getElementById('money').scrollIntoView()">Деньги</div>
+     <div class="nav-item" onclick="document.getElementById('join').scrollIntoView()">Контакты</div>
   </div>
+
+  <section id="main">
+    <div class="title">Семейный кооператив Шляпа</div>
+    <div class="center-banner">
+      <img src="boy.png" alt="мальчик" class="boy">
+      <div class="center-banner-text">Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</div>
+      <img src="girl.png" alt="девочка" class="girl">
+    </div>
+    <div class="scene-bottom">
+      <img src="sasha_punch.png" alt="Саша" class="sasha">
+      <img src="fr.png" alt="Фр" class="fr">
+      <img src="ball.png" alt="Мяч" class="ball">
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="neucha">
+      <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время.</p>
+      <p>Шляпа – это место, где дети и взрослые относятся друг к другу бережно и уважительно. Взрослые заботятся о физической и эмоциональной безопасности детей, не имея скрытых намерений, без манипуляций, обмана или насилия.</p>
+      <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки шляпы – равны в принятии любых решений.</p>
+      <p>Среди хозя:ек действует принцип “от каждо:й по способностям, каждо:й по потребностям”. Мы искренне стремимся вкладываться в сообщество, а сообщество прозрачно распределяет ресурсы.</p>
+      <p>Семьи, которые хотят только приводить своих детей в шляпу, но не хотят участвовать в кооперативе, имеют статус гость:ий. Они участвуют в наших днях на коммерческой основе.</p>
+      <img src="ada.png" alt="Ада" class="ada-img">
+    </div>
+  </section>
+
+  <section id="day">
+    <div class="neucha">
+      <h2>День в шляпе</h2>
+      <p>Поскольку мы не являемся учреждением, у нас нет фиксированного расписания. Наши дни похожи на качественные семейные выходные.</p>
+      <p>Обычно мы встречаемся утром и обсуждаем, чем бы нам сегодня заняться. Тут же можем обсудить вопросы и проблемы, связанные с деятельностью или правила кооператива.</p>
+      <p>Дальше начинаются самые важные дела, совместные или индивидуальные. Кто-то лепит из глины, кто-то мастерит картонных монстров, часть людей могут пойти в парк или на футбольное поле, а кто-то, возможно, захочет приготовить обед и накормить всех желающих.</p>
+      <p>Может быть отдельные люди захотят позаниматься академическими штуками, и это отлично! Сообщество поддержит и постарается помочь ресурсами. Но академическая/«развивающая» деятельность не является приоритетной по сравнению с играми, творчеством или ковырянием в носу. Все дела равно важны.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="neucha">
+      <h2>Управление кооперативом шляпа</h2>
+      <p>Главным органом принятия решений в шляпе является Общий сбор. На Общем сборе могут приниматься/ отменяться/ меняться правила кооператива, решаются текущие вопросы и конфликты.</p>
+      <p>Голос каждо:й хозяй:ки равен остальным. Решения принимаются по принципам прямой демократии. Мы стремимся принимать решения на основе консенсуса, когда это возможно.</p>
+      <p>Все люди в шляпе руководствуются Правилами кооператива и принципами, отраженными в Конституции. Конституция и Правила отражают ценности сообщества и нужны для эффективного регулирования отношений внутри кооператива.</p>
+      <h3>Наши ценности</h3>
+      <p><strong>Равенство.</strong> Кажд:ая из нас имеет равный голос в принятии решений кооператива. Потребности, цели и интересы каждо:й из нас равно важны. При этом сообщество старается предоставить каждо:й равный доступ к ресурсам и к механизмам сообщества.</p>
+      <p><strong>Свобода.</strong> Каждый человек может заниматься чем угодно, если это не пересекает чьих-либо границ, не мешает чьей-либо деятельности и не нарушает правил кооператива. Никто не может принуждать друг:ую к чему-либо.</p>
+      <p><strong>Ненасилие.</strong> Мы уважительно относимся к каждой личности. В общении мы не имеем скрытых целей, не прибегаем к манипуляциям и обману. Обратная связь возможна только по запросу и только бережная.</p>
+      <p><strong>Ответственность.</strong> Кажд:ая из нас ответственн:а за свои действия или бездействие.</p>
+      <p><strong>От каждо:й по способностям.</strong> Кажд:ая хозяй:ка искренне старается вкладывать ресурсы (время, силы, деньги) в кооператив по своим возможностям. Вклад каждо:й не обязан быть равен остальным, важно намерение и высокий приоритет участия в кооперативе среди остальных дел хозяй:ки.</p>
+      <p><strong>Каждо:й по потребностям.</strong> Кооператив искренне старается слышать потребности каждо:й хозяй:ки и удовлетворять их.</p>
+    </div>
+  </section>
+  <section id="money">
+    <div class="neucha">
+      <h2>Деньги</h2>
+      <p>Семейный кооператив шляпа — не коммерческий проект. Мы не ставим цели заработать как можно больше денег. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.</p>
+      <p>Бюджет кооператива формируется из взносов хозяе:к и оплаты посещений гост:ий.</p>
+      <p>Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».</p>
+      <p>Стоимость посещения для гост:ий устанавливается решением кооператива.</p>
+      <p>По окончании каждого месяца, исходя из состояния бюджета и прогнозируемых доходов и расходов, кооператив формирует фонд запросов. Средства из этого фонда распределяются на потребности хозяе:к решением кооператива.</p>
+      <p>Семьи, которые хотят только приводить своих детей в шляпу, но не хотят участвовать в кооперативе, имеют статус гость:ий. Они участвуют в наших днях на коммерческой основе.</p>
+      <h3>Чего вы не получите в шляпе</h3>
+      <p><strong>шляпа – не учреждение.</strong> У нас нет формальной структуры. Мы в первую очередь сообщество людей.</p>
+      <p><strong>шляпа не предоставляет услуг.</strong> У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.</p>
+      <p><strong>шляпа – не место для передержки детей.</strong> В первую очередь мы – люди, дети и взрослые, которые проводят время вместе, для взаимного удовольствия и пользы.</p>
+      <p><strong>шляпа не занимается принуждением или манипуляциями</strong> для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний. Люди занимаются только своими интересами.</p>
+      <p><strong>В шляпе нет начальства и подчиненных.</strong> Все равны.</p>
+    </div>
+  </section>
+  <section id="join">
+    <div class="neucha" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 40px; min-height: 60vh;">
+      <h2>Контакты</h2>
+      <div style="display: flex; width: 100%; justify-content: space-between; max-width: 800px;">
+        <div style="text-align: left;">Ада @ada_t</div>
+        <div style="text-align: right;">Дима @rasdmi +79161558202</div>
+      </div>
+      <div style="margin-top: 60px;">сейчас в Москве 2025г</div>
+    </div>
+  </section>
 </body>
 </html>
