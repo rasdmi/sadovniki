@@ -260,6 +260,7 @@
       </div>
     </div>
   </section>
+  
 
   <section>
     <div class="centered-text" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
@@ -278,34 +279,42 @@
   
   <style>
     @media (max-width: 600px) {
-  .centered-text img {
-    height: 60px;
+      nav {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 6px;
       }
   
       .nav-btn {
-        flex: 0 1 48%;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
+        flex: 0 1 47%;
+        padding: 6px 8px;
+        font-size: 0.8rem;
       }
   
-      .main-banner h1 {
-        font-size: 1.6rem;
-        margin-top: 80px;
+      .main-banner h1.main-title {
+        font-size: 1.3rem;
+        margin-top: 10px;
+        margin-bottom: 20px;
       }
   
       .main-description {
-        flex-direction: column;
-        margin-top: 40px;
-      }
-  
-      .main-description span {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        max-width: 90vw;
         text-align: center;
-        font-size: 1rem;
       }
   
       .main-description img {
-        position: static !important;
-        height: 120px;
+        height: 80px;
+      }
+  
+      .main-description span {
+        flex-basis: 100%;
+        font-size: 0.9rem;
+        padding: 10px;
       }
     }
   </style>
