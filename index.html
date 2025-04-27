@@ -95,7 +95,7 @@
     }
 
     .main-description img {
-      height: 160px;
+      height: 250px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -262,11 +262,54 @@
   </section>
 
   <section>
-    <div class="centered-text">
-      <h2>О нас</h2>
-      <p>Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы! Еще мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.</p>
+    <div class="centered-text" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
+      <h2 style="font-size: 2rem; margin-bottom: 20px;">О нас</h2>
+      <p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
+        Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br>
+        Ещё мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
+      </p>
+      <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
+        <img src="ball.png" alt="мяч" style="height: 70px;">
+        <img src="fr1.png" alt="фр1" style="height: 90px;">
+        <img src="sasha1.png" alt="саша1" style="height: 110px;">
+      </div>
     </div>
   </section>
+  
+  <style>
+    @media (max-width: 600px) {
+  .centered-text img {
+    height: 60px;
+      }
+  
+      .nav-btn {
+        flex: 0 1 48%;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+  
+      .main-banner h1 {
+        font-size: 1.6rem;
+        margin-top: 80px;
+      }
+  
+      .main-description {
+        flex-direction: column;
+        margin-top: 40px;
+      }
+  
+      .main-description span {
+        text-align: center;
+        font-size: 1rem;
+      }
+  
+      .main-description img {
+        position: static !important;
+        height: 120px;
+      }
+    }
+  </style>
+  
 
   <section>
     <div class="centered-text">
@@ -289,7 +332,7 @@
   <section>
     <div class="centered-text">
       <h2>Как это работает</h2>
-      <p>Общий сбор — главный орган принятия решений. </p>На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил.</p> Решения принимаются по принципам прямой демократии со стремлением к консенсусу.</p>
+      <p>Общий сбор — главный орган принятия решений. На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил. Решения принимаются по принципам прямой демократии со стремлением к консенсусу.</p>
       <p>Мы руководствуемся Правилами кооператива и принципами, описанными в шляпной Конституции. </p>
       <h3>Чего вы не получите в шляпе</h3>
       <p>Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.</p>
