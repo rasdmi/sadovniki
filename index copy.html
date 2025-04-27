@@ -11,10 +11,8 @@
     }
 
     @font-face {
-      font-family: 'Raleway';
-      src: url('Raleway.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
+      font-family: 'Nunito';
+      src: url('Nunito.ttf') format('truetype');
     }
 
     * {
@@ -34,8 +32,8 @@
       font-family: 'Assya', cursive;
     }
 
-    p, .centered-text, .value-list div {
-      font-family: 'Raleway', sans-serif;
+    p, .centered-text, .value-list div, .speech-bubble {
+      font-family: 'Nunito', sans-serif;
     }
 
     .container {
@@ -47,13 +45,13 @@
 
     section {
       width: 100vw;
-      height: 100vh;
-      padding: 40px;
+      min-height: 100vh;
+      padding: 120px 40px 40px;
       overflow-y: auto;
       flex-shrink: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
     nav {
@@ -86,11 +84,12 @@
 
     .main-title {
       font-size: 2.6rem;
-      margin-top: 200px;
+      margin-top: 50px;
       margin-bottom: 40px;
     }
 
     .main-description {
+      position: relative;
       font-size: 1.6rem;
       display: flex;
       align-items: center;
@@ -101,6 +100,15 @@
 
     .main-description img {
       height: 180px;
+    }
+
+    .main-description img.clickable {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .main-description img.clickable:active {
+      transform: scale(0.95);
     }
 
     .centered-text {
@@ -126,11 +134,10 @@
       width: 100vw;
       height: 100vh;
       background: rgba(0,0,0,0.6);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      display: none;
     }
 
     .modal-content {
@@ -140,6 +147,20 @@
       max-width: 600px;
       font-size: 1.3rem;
       text-align: center;
+    }
+
+    .speech-bubble {
+      position: absolute;
+      max-width: 300px;
+      background: #f0f0f0;
+      border-radius: 15px;
+      padding: 15px;
+      font-family: 'Nunito';
+      font-size: 1rem;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 9999;
     }
   </style>
 </head>
@@ -160,59 +181,28 @@
     <div class="main-banner">
       <h1 class="main-title">Семейный кооператив Шляпа</h1>
       <div class="main-description">
-        <img src="boy.png" alt="мальчик">
-        <span>Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</span>
-        <img src="girl.png" alt="девочка">
+        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech()">
+        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech2()">
+
+        <div id="speech" class="speech-bubble" style="top: -180px; left: 0;">
+          для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свое бережное сообщество, чем проживу жизнь в неподходящем обществе.
+        </div>
+
+        <div id="speech2" class="speech-bubble" style="top: -130px; right: 100px; background: #f0f0ff;">
+          я вижу, как взрослая жизнь может быть дружелюбной. в шляпе мне просто хорошо и спокойно. и это не шутка, а редкость.
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="centered-text">
-      <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время</p>
-    <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки шляпы – равны в принятии любых решений.</p>
-    <p>Семьи, которые хотят только приводить своих детей в шляпу, но не хотят участвовать в кооперативе, имеют статус гост:ий.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h2>День в шляпе</h2>
-      <p>(текст о дне в шляпе)</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="value-list">
-      <div onclick="showValue('Равенство')">Равенство.</div>
-      <div onclick="showValue('Ненасилие')">Ненасилие.</div>
-      <div onclick="showValue('Ответственность')">Ответственность.</div>
-      <div onclick="showValue('От каждо:й по способностям')">От каждо:й по способностям.</div>
-      <div onclick="showValue('Каждо:й по потребностям')">Каждо:й по потребностям.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h2>Как это работает</h2>
-      <p>(текст о правилах)</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h2>Деньги</h2>
-      <p>(текст о деньгах)</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h3>Контакты</h3>
-      <p>Ада тг @ada_t<br>Дима тг @rasdmi +79161558202</p>
-      <p>сейчас в Москве 2025г</p>
-    </div>
-  </section>
+  <!-- Остальные секции -->
+  <section><div class="centered-text"><h2>О нас</h2><p>Твой текст...</p></div></section>
+  <section><div class="centered-text"><h2>День в шляпе</h2><p>Твой текст...</p></div></section>
+  <section><div class="value-list">...</div></section>
+  <section><div class="centered-text"><h2>Как это работает</h2><p>Твой текст...</p></div></section>
+  <section><div class="centered-text"><h2>Деньги</h2><p>Твой текст...</p></div></section>
+  <section><div class="centered-text"><h2>Контакты</h2><p>Твой текст...</p></div></section>
 </div>
 
 <div id="value-modal" class="modal" onclick="hideValue()">
@@ -224,16 +214,27 @@
     document.getElementById('slider').style.transform = `translateX(-${index * 100}vw)`;
   }
 
+  function toggleSpeech() {
+    const speech = document.getElementById('speech');
+    speech.style.display = speech.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function toggleSpeech2() {
+    const speech2 = document.getElementById('speech2');
+    speech2.style.display = speech2.style.display === 'block' ? 'none' : 'block';
+  }
+
   const values = {
-    'Равенство': 'Кажд:ая из нас имеет равный голос... (и так далее)',
-    'Ненасилие': 'Мы уважительно относимся к каждой личности...',
-    'Ответственность': 'Кажд:ая из нас ответственн:а за свои действия...',
-    'От каждо:й по способностям': 'Кажд:ая хозяй:ка старается вкладывать ресурсы...',
-    'Каждо:й по потребностям': 'Кооператив старается слышать потребности каждой...'
+    'Равенство': `<span style="font-family: 'Nunito';">Описание...</span>`,
+    'Свобода': `<span style="font-family: 'Nunito';">Описание...</span>`,
+    'Ненасилие': `<span style="font-family: 'Nunito';">Описание...</span>`,
+    'Ответственность': `<span style="font-family: 'Nunito';">Описание...</span>`,
+    'От каждо:й по способностям': `<span style="font-family: 'Nunito';">Описание...</span>`,
+    'Каждо:й по потребностям': `<span style="font-family: 'Nunito';">Описание...</span>`
   };
 
   function showValue(name) {
-    document.getElementById('value-text').innerText = values[name];
+    document.getElementById('value-text').innerHTML = values[name];
     document.getElementById('value-modal').style.display = 'flex';
   }
 

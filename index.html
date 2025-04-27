@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Семейный кооператив Шляпа</title>
   <style>
     @font-face {
@@ -13,8 +13,6 @@
     @font-face {
       font-family: 'Nunito';
       src: url('Nunito.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     * {
@@ -25,35 +23,10 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
       font-family: 'Assya', cursive;
       background: white;
-    }
-
-    h1, h2, h3, .nav-btn {
-      font-family: 'Assya', cursive;
-    }
-
-    p, .centered-text, .value-list div {
-      font-family: 'Nunito', sans-serif;
-    }
-
-    .container {
-      display: flex;
-      width: 700vw;
-      height: 100vh;
-      transition: transform 0.6s ease-in-out;
-    }
-
-    section {
-      width: 100vw;
-      height: 100vh;
-      padding: 40px;
-      overflow-y: auto;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+      font-size: 20px
     }
 
     nav {
@@ -62,52 +35,93 @@
       width: 100vw;
       display: flex;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.9);
-      z-index: 999;
-      padding: 10px;
       gap: 10px;
+      background: rgba(255,255,255,0.9);
+      z-index: 1000;
+      padding: 10px;
     }
 
     .nav-btn {
-      padding: 14px 24px;
+      padding: 10px 20px;
+      font-size: 1rem;
       border: 2px solid black;
+      border-radius: 8px;
       background: white;
-      border-radius: 10px;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-family: 'Assya';
+    }
+
+    .container {
+      display: flex;
+      width: 700vw;
+      height: 100vh;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    section {
+      width: 100vw;
+      height: 100vh;
+      padding: 60px 20px 20px;
+      flex-shrink: 0;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .main-banner {
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
     .main-title {
-      font-size: 2.6rem;
-      margin-top: 50px;
-      margin-bottom: 40px;
+      font-size: 2.4rem;
+      margin: 60px 0 20px;
     }
 
     .main-description {
-      font-size: 1.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
       max-width: 90vw;
+      font-size: 1.2rem;
+      position: relative;
+      font-family: 'Nunito';
     }
 
     .main-description img {
-      height: 180px;
+      height: 280px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .main-description img:active {
+      transform: scale(0.95);
+    }
+
+    .speech-bubble {
+      position: absolute;
+      max-width: 300px;
+      background: #f0f0f0;
+      border-radius: 15px;
+      padding: 15px;
+      font-family: 'Nunito';
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
     }
 
     .centered-text {
       max-width: 800px;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       text-align: center;
+      font-family: 'Nunito';
     }
 
     .value-list {
@@ -115,22 +129,20 @@
       flex-direction: column;
       gap: 20px;
       align-items: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       cursor: pointer;
     }
 
     .modal {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(0,0,0,0.6);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      display: none;
     }
 
     .modal-content {
@@ -138,10 +150,34 @@
       padding: 30px;
       border-radius: 12px;
       max-width: 600px;
-      font-size: 1.3rem;
+      font-family: 'Nunito';
+      font-size: 1.2rem;
       text-align: center;
     }
+
+    @media (max-width: 600px) {
+      .main-description {
+        flex-direction: column;
+      }
+
+      .main-description img {
+        height: 180px;
+      }
+
+      .nav-btn {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+      }
+    }
   </style>
+  <script>
+    function toggleSpeech(id) {
+      const el = document.getElementById(id);
+      const all = document.querySelectorAll('.speech-bubble');
+      all.forEach(b => { if (b !== el) b.style.display = 'none'; });
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </head>
 <body>
 
@@ -160,9 +196,15 @@
     <div class="main-banner">
       <h1 class="main-title">Семейный кооператив Шляпа</h1>
       <div class="main-description">
-        <img src="boy.png" alt="мальчик">
-        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих</span>
-        <img src="girl.png" alt="девочка">
+        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')">
+        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')">
+        <div id="speech" class="speech-bubble" style="top: -160px; left: -10%;">
+          для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свой бережный мир, чем проживу жизнь в неподходящем обществе.
+        </div>
+        <div id="speech2" class="speech-bubble" style="top: -60px; right: -10%; background: #f0f0ff;">
+          Иногда я просто пержу от счастья
+        </div>
       </div>
     </div>
   </section>
@@ -170,30 +212,27 @@
   <section>
     <div class="centered-text">
       <h2>О нас</h2>
-      Шляпа - это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!
-    Еще мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
-     </div>
+      <p>Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы! Еще мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.</p>
+    </div>
   </section>
 
   <section>
     <div class="centered-text">
       <h2>День в шляпе</h2>
-      Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. </p>А дальше сколько интересов столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и тп. 
-      <p>Наша общая цель помогать и поддерживать друг друга, как можем. И мы помним про отсутсвие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.</p>
+      <p>Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.</p>
     </div>
   </section>
 
   <section>
     <div class="value-list">
-      <div onclick="showValue('Равенство')" style="font-family: Assya;">Равенство</div>
-      <div onclick="showValue('Свобода')" style="font-family: Assya;">Свобода</div>
-      <div onclick="showValue('Ненасилие')" style="font-family: Assya;">Ненасилие</div>
-      <div onclick="showValue('Ответственность')" style="font-family: Assya;">Ответственность</div>
-      <div onclick="showValue('От каждо:й по способностям')" style="font-family: Assya;">От каждо:й по способностям</div>
-      <div onclick="showValue('Каждо:й по потребностям')" style="font-family: Assya;">Каждо:й по потребностям</div>
+      <div onclick="showValue('Равенство')">Равенство</div>
+      <div onclick="showValue('Свобода')">Свобода</div>
+      <div onclick="showValue('Ненасилие')">Ненасилие</div>
+      <div onclick="showValue('Ответственность')">Ответственность</div>
+      <div onclick="showValue('От каждо:й по способностям')">От каждо:й по способностям</div>
+      <div onclick="showValue('Каждо:й по потребностям')">Каждо:й по потребностям</div>
     </div>
   </section>
-  
 
   <section>
     <div class="centered-text">
