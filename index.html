@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Семейный кооператив Шляпа</title>
   <style>
     @font-face {
@@ -26,7 +26,7 @@
       font-family: 'Assya', cursive;
       background: white;
       overflow: hidden;
-      font-size: 20px
+      font-size: 18px;
     }
 
     nav {
@@ -34,18 +34,19 @@
       top: 0;
       width: 100vw;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.9);
+      gap: 8px;
+      background: rgba(255,255,255,0.95);
       z-index: 1000;
       padding: 10px;
     }
 
     .nav-btn {
-      padding: 10px 20px;
+      padding: 10px 16px;
       font-size: 1rem;
       border: 2px solid black;
-      border-radius: 8px;
+      border-radius: 6px;
       background: white;
       cursor: pointer;
       font-family: 'Assya';
@@ -61,7 +62,7 @@
     section {
       width: 100vw;
       height: 100vh;
-      padding: 60px 20px 20px;
+      padding: 80px 16px 40px;
       flex-shrink: 0;
       overflow-y: auto;
       display: flex;
@@ -74,18 +75,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .main-title {
       font-size: 2.4rem;
-      margin: 60px 0 20px;
+      margin: 40px 0 20px;
     }
 
     .main-description {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
       max-width: 90vw;
       font-size: 1.2rem;
       position: relative;
@@ -93,7 +95,7 @@
     }
 
     .main-description img {
-      height: 280px;
+      height: 160px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -102,12 +104,16 @@
       transform: scale(0.95);
     }
 
+    .main-description span {
+      max-width: 300px;
+    }
+
     .speech-bubble {
       position: absolute;
-      max-width: 300px;
+      max-width: 280px;
       background: #f0f0f0;
       border-radius: 15px;
-      padding: 15px;
+      padding: 16px;
       font-family: 'Nunito';
       font-size: 1rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -117,7 +123,7 @@
     }
 
     .centered-text {
-      max-width: 800px;
+      max-width: 700px;
       font-size: 1.2rem;
       line-height: 1.6;
       text-align: center;
@@ -135,38 +141,81 @@
 
     .modal {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.5);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      padding: 20px;
     }
 
     .modal-content {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 600px;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 20px 24px;
+      border-radius: 20px;
       font-family: 'Nunito';
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       text-align: center;
+      max-width: 480px;
+      width: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
     }
 
     @media (max-width: 600px) {
+      html, body {
+        font-size: 16px;
+      }
+
+      .main-title {
+        font-size: 2rem;
+      }
+
       .main-description {
         flex-direction: column;
+        justify-content: flex-end;
+        min-height: 60vh;
       }
 
       .main-description img {
-        height: 180px;
+        height: 140px;
+        position: absolute;
+        bottom: 0;
+      }
+
+      .main-description img:first-of-type {
+        left: 10px;
+      }
+
+      .main-description img:last-of-type {
+        right: 10px;
+      }
+
+      .main-description span {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+      }
+
+      .speech-bubble {
+        font-size: 0.95rem;
+        max-width: 240px;
+        padding: 12px;
       }
 
       .nav-btn {
         font-size: 0.9rem;
-        padding: 8px 14px;
+        padding: 8px 12px;
+        flex: 1 1 40%;
+        text-align: center;
+      }
+
+      .centered-text {
+        padding: 0 10px;
+        font-size: 1.05rem;
       }
     }
   </style>
@@ -179,6 +228,9 @@
     }
   </script>
 </head>
+
+
+
 <body>
 
 <nav>
