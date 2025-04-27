@@ -265,7 +265,7 @@
   
 
   <section>
-    <div class="centered-text" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
+    <div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
       <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">О нас</h2>
       <p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
         Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br>
@@ -318,17 +318,39 @@
         font-size: 0.9rem;
         padding: 10px;
       }
+      @media (max-width: 768px) {
+  section .centered-text h2 {
+    font-size: 1.4rem;
+  }
+
+  section .centered-text h3 {
+    font-size: 1.2rem;
+    margin-top: 16px;
+  }
+
+  section .centered-text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 6px auto;
+    max-width: 90vw;
+  }
+
+  section {
+    padding: 80px 20px 20px;
+    align-items: flex-start;
+  }
+}
     }
   </style>
   
 
   <section>
-    <div class="centered-text" style="position: relative; font-size: 0.9rem; line-height: 1.5; padding-bottom: 100px;">
-      <h2>День в шляпе</h2>
+    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px;">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">День в шляпе</h2>
       <p>
         Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.
       </p>
-      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 10px; height: 130px; z-index: -1;">
+      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: -1;">
     </div>
   </section>
   
@@ -341,7 +363,7 @@
       <div onclick="showValue('Ответственность')">Ответственность</div>
       <div onclick="showValue('От каждо:й по способностям')">От каждо:й<br>по способностям</div>
       <div onclick="showValue('Каждо:й по потребностям')">Каждо:й<br>по потребностям</div>
-      <div class="circle-hint" style="right: 10px; bottom: 10px; left: auto;">нажми на нас</div>
+      <div class="value-note" style="font-family: 'Nunito', sans-serif;">нажми на нас</div>
     </div>
   </section>
 
