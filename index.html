@@ -238,16 +238,19 @@
   }
 
   .circle-hint {
-  position: absolute;
-  bottom: 10px;
+  position: fixed;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Nunito';
   font-size: 1rem;
   text-align: center;
-  width: 100%;
-  z-index: 1;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 10px;
+  z-index: 999;
 }
+
 
   .speech-bubble {
     position: fixed;
