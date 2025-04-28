@@ -71,12 +71,13 @@
     }
 
     .main-banner {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 120px; /* добавлено */
+}
 
     .main-title {
       font-size: 2.4rem;
@@ -197,24 +198,34 @@
       }
 
       .main-description {
-        flex-direction: column;
-        justify-content: flex-end;
-        min-height: 60vh;
-      }
-
-      .main-description img {
-        height: 140px;
-        position: relative;
-      }
-
-      .main-description span {
-        position: relative;
-        z-index: 2;
-        padding: 20px;
-        text-align: center;
-        max-width: 90vw;
-        font-size: 1rem;
-      }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 0;
+  max-width: 90vw;
+  margin: 0 auto;
+  text-align: center;}
+  
+  .main-description img {
+  height: 120px;
+  flex: 0 0 auto;
+}
+.main-description span {
+  flex: 1 1 200px;
+  font-size: 1rem;
+  max-width: 280px;
+  padding: 8px;
+}
+  .circle-hint {
+    font-family: 'Nunito';
+    font-size: 1rem;
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+  }
 
       .speech-bubble {
         font-size: 0.95rem;
