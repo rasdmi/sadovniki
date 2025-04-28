@@ -1,247 +1,286 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Семейный кооператив Шляпа</title>
-  <style>
-    @font-face {
-      font-family: 'Assya';
-      src: url('AssyaFont.otf') format('opentype');
-    }
-
-    @font-face {
-      font-family: 'Nunito';
-      src: url('Nunito.ttf') format('truetype');
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      font-family: 'Assya', cursive;
-      font-size: 18px;
-      background: #fff;
-      min-height: 100%;
-      overflow-x: hidden;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100vw;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px;
-      background: rgba(255,255,255,0.95);
-      z-index: 1000;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .nav-btn {
-      padding: 10px 16px;
-      font-size: 1rem;
-      border: 2px solid black;
-      border-radius: 6px;
-      background: white;
-      cursor: pointer;
-      font-family: 'Assya';
-      transition: background 0.2s;
-    }
-
-    .nav-btn:hover {
-      background: #f0f0f0;
-    }
-
-    .container {
-      display: flex;
-      width: 700vw;
-      height: 100vh;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    section {
-      width: 100%;
-      min-height: 100vh;
-      padding: 120px 16px 40px;
-      box-sizing: border-box;
-      overflow-y: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .main-banner {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 60px;
-    }
-
-    .main-title {
-      font-size: 2.4rem;
-      margin-top: 0;
-    }
-
-    .main-description {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      max-width: 90vw;
-      font-size: 1.2rem;
-      font-family: 'Nunito';
-    }
-
-    .main-description img {
-      height: 250px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .main-description img:active {
-      transform: scale(0.95);
-    }
-
-    .main-description span {
-      max-width: 300px;
-    }
-
-    .centered-text {
-      max-width: 700px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      text-align: center;
-      font-family: 'Nunito';
-      padding: 0 10px;
-    }
-
-    .value-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    .modal, .speech-bubble {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #f0f0f0;
-      border-radius: 15px;
-      padding: 16px;
-      font-family: 'Nunito';
-      font-size: 0.95rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      max-width: 90vw;
-      display: none;
-      z-index: 9999;
-    }
-
-    .modal-content {
-      pointer-events: auto;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding-top: 160px !important;
-        align-items: flex-start;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Семейный кооператив Шляпа</title>
+    <style>
+      @font-face {
+        font-family: 'Assya';
+        src: url('AssyaFont.otf') format('opentype');
       }
-
-      .main-title {
-        font-size: 2rem;
-        margin-top: 140px;
+  
+      @font-face {
+        font-family: 'Nunito';
+        src: url('Nunito.ttf') format('truetype');
       }
-
-      .main-description {
-        flex-direction: row;
-        gap: 10px;
-        padding: 20px;
-        text-align: center;
+  
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-
-      .main-description img {
-        height: 90px;
+  
+      html, body {
+        min-height: 100%;
+        font-family: 'Assya', cursive;
+        background: white;
+        font-size: 18px;
+        overflow-x: hidden;
       }
-
-      .main-description span {
-        font-size: 1rem;
-        max-width: 60%;
-        padding: 0 10px;
+  
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        background: rgba(255,255,255,0.95);
+        z-index: 1000;
+        padding: 10px;
       }
-
+  
       .nav-btn {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-        flex: 1 1 45%;
+        padding: 10px 16px;
+        font-size: 1rem;
+        border: 2px solid black;
+        border-radius: 6px;
+        background: white;
+        cursor: pointer;
+        font-family: 'Assya';
       }
-    }
-
-    @media (max-width: 480px) {
+  
+      .container {
+        display: flex;
+        width: 700vw;
+        height: 100vh;
+        transition: transform 0.5s ease-in-out;
+      }
+  
+      section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 100px 16px 40px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .main-banner {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-top: 60px;
+      }
+  
+      .main-title {
+        font-size: 2.4rem;
+        margin-top: 0;
+      }
+  
+      .main-description {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        max-width: 90vw;
+        font-size: 1.2rem;
+        position: relative;
+        font-family: 'Nunito';
+      }
+  
       .main-description img {
-        height: 80px;
+        height: 250px;
+        cursor: pointer;
+        transition: transform 0.2s;
       }
-
+  
+      .main-description img:active {
+        transform: scale(0.95);
+      }
+  
       .main-description span {
         max-width: 300px;
       }
-
-      .nav-btn {
-        font-size: 0.85rem;
-        padding: 6px 10px;
+  
+      .speech-bubble {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 280px;
+        background: #f0f0f0;
+        border-radius: 15px;
+        padding: 16px;
+        font-family: 'Nunito';
+        font-size: 0.95rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
       }
-    }
-  </style>
-
-  <script>
-    function toggleSpeech(id) {
-      const el = document.getElementById(id);
-      const all = document.querySelectorAll('.speech-bubble');
-      all.forEach(b => { if (b !== el) b.style.display = 'none'; });
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const navHeight = document.querySelector('nav')?.offsetHeight || 100;
-      if (window.innerWidth <= 768) {
-        document.querySelectorAll('section').forEach(section => {
-          section.style.paddingTop = (navHeight + 20) + 'px';
-        });
+  
+      .centered-text {
+        max-width: 700px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        text-align: center;
+        font-family: 'Nunito';
       }
-
-      // Анимация появления при загрузке и скролле
-      const sections = document.querySelectorAll('section');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      sections.forEach(section => observer.observe(section));
-    });
-    
-  </script>
-</head>
-
+  
+      .value-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+  
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: transparent;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+  
+      .modal-content {
+        background: #f0f0f0;
+        border-radius: 15px;
+        padding: 16px;
+        font-family: 'Nunito';
+        font-size: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        max-width: 280px;
+        pointer-events: auto;
+      }
+  
+      @media (max-width: 768px) {
+        section {
+          padding-top: 160px !important;
+          align-items: flex-start;
+        }
+  
+        section .centered-text h2 {
+          font-size: 1.4rem;
+        }
+  
+        section .centered-text h3 {
+          font-size: 1.2rem;
+          margin-top: 20px;
+          margin-bottom: 12px;
+        }
+  
+        section .centered-text p {
+          font-size: 0.9rem;
+          line-height: 1.4;
+          margin: 6px auto;
+          max-width: 90vw;
+        }
+  
+        .main-title {
+          font-size: 2rem;
+          margin-top: 140px;
+        }
+  
+        .main-description {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          gap: 10px;
+          padding: 20px;
+          max-width: 100%;
+          margin: 0 auto;
+          text-align: center;
+        }
+  
+        .main-description img {
+          height: 90px;
+          flex: 0 0 auto;
+        }
+  
+        .main-description span {
+          font-size: 1rem;
+          max-width: 60%;
+          padding: 0 10px;
+          flex: 1;
+        }
+  
+        .main-banner {
+          padding-top: 160px;
+        }
+  
+        .nav-btn {
+          font-size: 0.9rem;
+          padding: 8px 12px;
+          flex: 1 1 40%;
+          text-align: center;
+        }
+  
+        .centered-text {
+          padding: 0 10px;
+          font-size: 1.05rem;
+        }
+      }
+  
+      @media (max-width: 600px) {
+        html, body {
+          font-size: 16px;
+        }
+  
+        .nav-btn {
+          font-size: 0.85rem;
+          padding: 6px 10px;
+          flex: 1 1 45%;
+        }
+  
+        .main-description img {
+          height: 100px;
+        }
+  
+        .main-description span {
+          max-width: 300px;
+          align-self: center;
+        }
+  
+        .modal-content {
+          max-width: 90vw;
+          font-size: 1rem;
+          padding: 16px;
+        }
+      }
+    </style>
+  
+    <script>
+      function toggleSpeech(id) {
+        const el = document.getElementById(id);
+        const all = document.querySelectorAll('.speech-bubble');
+        all.forEach(b => { if (b !== el) b.style.display = 'none'; });
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      }
+  
+      // Добавим динамический отступ на мобильных
+      window.addEventListener('DOMContentLoaded', () => {
+        const navHeight = document.querySelector('nav')?.offsetHeight || 100;
+        if (window.innerWidth <= 768) {
+          document.querySelectorAll('section').forEach(section => {
+            section.style.paddingTop = (navHeight + 20) + 'px';
+          });
+        }
+      });
+    </script>
+  </head>
   
 
 
