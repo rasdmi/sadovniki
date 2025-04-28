@@ -236,6 +236,14 @@
     padding: 0 10px;
     flex: 1;
   }
+  .boy-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.boy-wrapper img {
+  display: block;
+}
 
   .circle-hint {
   position: fixed;
@@ -248,9 +256,10 @@
   background: white;
   padding: 4px 12px;
   border-radius: 10px;
-  z-index: 999;
-}
+  z-index: 10000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
+}
 
   .speech-bubble {
     position: fixed;
@@ -324,7 +333,11 @@
     <div class="main-banner" style="position: relative;">
       <h1 class="main-title">Семейный кооператив Шляпа</h1>
       <div class="main-description">
-        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" >
+        <div class="boy-wrapper">
+          <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy">
+          <div class="circle-hint">нажми<br>на нас</div>
+        </div>
+        
         <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
         <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" >
         <div id="speech" class="speech-bubble" >
@@ -333,7 +346,7 @@
         <div id="speech2" class="speech-bubble" >
           Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
         </div>
-        <div class="circle-hint">нажми на нас</div>
+      
       </div>
     </div>
   </section>
