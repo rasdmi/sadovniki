@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Семейный кооператив Шляпа</title>
+<style>
+    @font-face {
+      font-family: 'Assya';
+      src: url('AssyaFont.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Nunito';
+      src: url('Nunito.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: 'Assya', cursive;
+      background: white;
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+      padding: 10px;
+    }
+
+    .nav-btn {
+      padding: 10px 16px;
+      font-size: 1rem;
+      border: 2px solid black;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      font-family: 'Assya';
+    }
+
+    .container {
+      display: flex;
+      width: 700vw;
+      height: 100vh;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    section {
+      width: 100%;
+      min-height: 100vh;
+      padding: 100px 16px 40px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-banner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 120px; /* добавлено */
+}
+
+    .main-title {
+      font-size: 2.4rem;
+      margin: 60px 0 20px;
+    }
+
+    .main-description {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      max-width: 90vw;
+      font-size: 1.2rem;
+      position: relative;
+      font-family: 'Nunito';
+    }
+
+    .main-description img {
+      height: 250px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .main-description img:active {
+      transform: scale(0.95);
+    }
+
+    .main-description span {
+      max-width: 300px;
+    }
+
+    .speech-bubble {
+      position: absolute;
+      max-width: 280px;
+      background: #f0f0f0;
+      border-radius: 15px;
+      padding: 16px;
+      font-family: 'Nunito';
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .centered-text {
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-align: center;
+      font-family: 'Nunito';
+    }
+
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent; /* прозрачный фон */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  }
+.modal-content {
+  pointer-events: all; /* чтобы содержимое можно было нажимать */}
+
+  .modal-content {
+  background: #f0f0f0; /* стиль как у speech-bubble */
+  border-radius: 15px;
+  padding: 16px;
+  font-family: 'Nunito';
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 280px;
+  pointer-events: auto; /* клики по контенту работают */
+}
+  /* Адаптация для экранов до 768px (планшеты и небольшие ноуты) */
+@media (max-width: 768px) {
+  section .centered-text h2 {
+    font-size: 1.4rem;
+  }
+
+  section .centered-text h3 {
+    font-size: 1.2rem;
+    margin-top: 16px;
+  }
+
+  section .centered-text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 6px auto;
+    max-width: 90vw;
+  }
+
+  section {
+    padding: 80px 20px 20px;
+    align-items: flex-start;
+  }
+
+  .centered-text {
+    padding: 0 10px;
+    font-size: 1.05rem;
+  }
+
+  .nav-btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    flex: 1 1 40%;
+    text-align: center;
+  }
+}
+
+/* Адаптация для мобильных устройств до 600px */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 16px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .main-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 0;
+    max-width: 90vw;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .main-description img {
+    height: 120px;
+    flex: 0 0 auto;
+  }
+
+  .main-description span {
+    flex: 1 1 200px;
+    font-size: 1rem;
+    max-width: 280px;
+    padding: 8px;
+  }
+
+  .circle-hint {
+    font-family: 'Nunito';
+    font-size: 1rem;
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .speech-bubble {
+    font-size: 0.95rem;
+    max-width: 240px;
+    padding: 12px;
+  }
+}
+
+/* Дополнительная адаптация для очень узких экранов до 480px */
+@media (max-width: 480px) {
+  .modal-content {
+    max-width: 90vw;
+    font-size: 1rem;
+    padding: 16px;
+  }
+
+  .main-description img {
+    height: 100px;
+  }
+
+  .main-description span {
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
+<script>
+    function toggleSpeech(id) {
+      const el = document.getElementById(id);
+      const all = document.querySelectorAll('.speech-bubble');
+      all.forEach(b => { if (b !== el) b.style.display = 'none'; });
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</head>
+<body>
+<nav>
+<button class="nav-btn" onclick="goToSlide(0)">Главная</button>
+<button class="nav-btn" onclick="goToSlide(1)">О нас</button>
+<button class="nav-btn" onclick="goToSlide(2)">День в шляпе</button>
+<button class="nav-btn" onclick="goToSlide(3)">Наши ценности</button>
+<button class="nav-btn" onclick="goToSlide(4)">Как это работает</button>
+<button class="nav-btn" onclick="goToSlide(5)">Деньги</button>
+<button class="nav-btn" onclick="goToSlide(6)">Контакты</button>
+</nav>
+<div class="container" id="slider">
+<section>
+<div class="main-banner" style="position: relative; padding-top: 80px;">
+<h1 class="main-title">Семейный кооператив Шляпа</h1>
+<div class="main-description">
+<img alt="мальчик" class="clickable" loading="lazy" onclick="toggleSpeech('speech')" src="boy.png"/>
+<span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+<img alt="девочка" class="clickable" loading="lazy" onclick="toggleSpeech('speech2')" src="girl.png"/>
+<div class="speech-bubble" id="speech" style="top: -160px; left: -10%;">
+         я дима, для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свой бережный мир, чем проживу жизнь в неподходящем обществе.
+        </div>
+<div class="speech-bubble" id="speech2" style="top: -60px; right: -10%; background: #f0f0ff;">
+          Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
+        </div>
+<div class="circle-hint" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: 'Nunito'; font-size: 1rem; text-align: center; width: 100%;">нажми на нас</div>
+</div>
+</div>
+</section>
+<section>
+<div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px; padding-top: 80px;">
+<h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">О нас</h2>
+<p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
+        Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br/>
+        Ещё мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
+      </p>
+<div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
+<img alt="мяч" loading="lazy" src="ball.png" style="height: 80px;"/>
+<img alt="фр1" loading="lazy" src="fr1.png" style="height: 100px;"/>
+<img alt="саша1" loading="lazy" src="sasha1.png" style="height: 130px;"/>
+</div>
+</div>
+</section>
+<section>
+<div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px; padding-top: 80px;">
+<h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">День в шляпе</h2>
+<p>
+        Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.
+      </p>
+<img alt="мишка" loading="lazy" src="mish.png" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: 1;"/>
+</div>
+</section>
+<section>
+<div class="value-list" style="position: relative; padding-top: 80px;">
+<div onclick="showValue('Равенство')">Равенство</div>
+<div onclick="showValue('Свобода')">Свобода</div>
+<div onclick="showValue('Ненасилие')">Ненасилие</div>
+<div onclick="showValue('Ответственность')">Ответственность</div>
+<div onclick="showValue('От каждо:й по способностям')">От каждо:й<br/>по способностям</div>
+<div onclick="showValue('Каждо:й по потребностям')">Каждо:й<br/>по потребностям</div>
+<div class="value-note" style="font-family: 'Nunito', sans-serif;">нажми на нас</div>
+</div>
+</section>
+<section>
+<div class="centered-text" style="; padding-top: 80px;">
+<h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Как это работает</h2>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Общий сбор — главный орган принятия решений. На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил.
+      </p>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Решения принимаются по принципам прямой демократии со стремлением к консенсусу.
+      </p>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Мы руководствуемся правилами, которые придумываем вместе, и ценностями.
+      </p>
+<h3 style="font-family: 'Assya', cursive; font-size: 1.5rem; margin-top: 20px;">Чего вы не получите в шляпе</h3>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.
+      </p>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа не предоставляет услуг. У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.
+      </p>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа не занимается принуждением или манипуляциями для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний.
+      </p>
+<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        В шляпе нет начальства и подчиненных. Все равны.
+      </p>
+</div>
+</section>
+<section>
+<div class="centered-text" style="; padding-top: 80px;">
+<h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Деньги</h2>
+<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Семейный кооператив шляпа — некоммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.
+      </p>
+<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Бюджет кооператива формируется из взносов хозяе:к и гост:ий.
+      </p>
+<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».
+      </p>
+</div>
+</section>
+<section>
+<div class="centered-text" style="text-align: center; padding-top: 40px;">
+<h3 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">Контакты</h3>
+<p style="font-size: 1.05rem;">
+<a href="https://t.me/coop_schlyapa" style="color: black; text-decoration: underline;" target="_blank">t.me/coop_schlyapa</a><br/>
+        Ада тг @ada_t<br/>
+        Дима тг @rasdmi +79161558202
+      </p>
+<p style="font-size: 0.95rem; margin-top: 10px;">сейчас в Москве 2025г</p>
+</div>
+</section>
+</div>
+<div class="modal" id="value-modal">
+<div aria-modal="true" class="modal-content" id="value-text" role="dialog"></div>
+</div>
+<script>
+ function goToSlide(index) {
+  const sections = document.querySelectorAll('section');
+  if (sections[index]) {
+    sections[index].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+  
+  const values = {
+  'Равенство': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Мы равные хозяй:ки Шляпы, имеем равноценные голоса. Потребности, цели и интересы каждо:й из нас равно важны. Мы старается предоставить каждо:й равный доступ к ресурсам и к механизмам сообщества.
+    </span>
+  `,
+  'Свобода': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Кажд:ая участни:ца сообщества может заниматься, чем хочет, если это не нарушает правил кооператива. Никто не может принуждать друг:ую к чему-либо.
+    </span>
+  `,
+  'Ненасилие': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Мы бережно относимся к каждой личности. В общении мы не имеем скрытых целей, не прибегаем к манипуляциям и обману. Мы слышим и не нарушаем границ друг друга. 
+    </span>
+  `,
+  'Ответственность': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Кажд:ая из нас ответственн:а за свои действия или бездействие.
+    </span>
+  `,
+  'От каждо:й по способностям': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Кажд:ая хозяй:ка искренне старается вкладывать ресурсы (время, силы, деньги) в кооператив по своим возможностям. Вклад каждо:й не обязан быть равен остальным, важно намерение и высокий приоритет участия в кооперативе среди остальных дел хозяй:ки.
+    </span>
+  `,
+  'Каждо:й по потребностям': `
+    <span style="font-family: 'Nunito'; font-size: 1.1rem;">
+      Кооператив(мы вместе) искренне старается слышать потребности каждо:й хозяй:ки и удовлетворять их.
+    </span>
+  `
+};
+
+  function showValue(name) {
+    document.getElementById('value-text').innerHTML = values[name];
+
+    document.getElementById('value-modal').style.display = 'flex';
+  }
+
+  function hideValue() {
+    document.getElementById('value-modal').style.display = 'none';
+  }
+  document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    hideValue();
+    document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+});
+document.addEventListener('click', function (e) {
+  const clickedSpeech = e.target.closest('.speech-bubble');
+  const clickedBubbleTrigger = e.target.classList.contains('clickable');
+  const modal = document.getElementById('value-modal');
+  const modalContent = document.querySelector('.modal-content');
+  const isValueBtn = e.target.closest('.value-list > div');
+
+  // не закрываем, если клик по speech-баблу или персонажу
+  if (!clickedSpeech && !clickedBubbleTrigger) {
+    document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+
+  // если модалка открыта, и клик вне контента и вне кнопок-ценностей — закрыть
+  if (modal.style.display === 'flex' && !modalContent.contains(e.target) && !isValueBtn) {
+    hideValue();
+  }
+});
+
+</script>
+</body>
+</html>
