@@ -22,11 +22,11 @@
     }
 
     html, body {
-      height: 100%;
-      font-family: 'Assya', cursive;
-      background: white;
-      overflow: hidden;
-      font-size: 18px;
+  min-height: 100%;
+  font-family: 'Assya', cursive;
+  background: white;
+  font-size: 18px;
+  overflow-x: hidden;
     }
 
     nav {
@@ -60,15 +60,16 @@
     }
 
     section {
-      width: 100vw;
-      height: 100vh;
-      padding: 80px 16px 40px;
-      flex-shrink: 0;
-      overflow-y: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 16px 40px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
     .main-banner {
       text-align: center;
@@ -154,15 +155,16 @@
     }
 
     .modal-content {
-      background: rgba(255, 255, 255, 0.88);
-      padding: 20px 24px;
-      border-radius: 20px;
-      font-family: 'Nunito';
-      font-size: 1.1rem;
-      text-align: center;
-      max-width: 480px;
-      width: auto;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  background: #f0f0f0;
+  border-radius: 15px;
+  padding: 16px;
+  font-family: 'Nunito';
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: block;
+  max-width: 280px;
+  position: relative;
+
     }
 
     @media (max-width: 600px) {
@@ -175,7 +177,10 @@
       }
       
 
-      .main-description {
+      .main-description span {
+        text-align: center;
+        max-width: 90vw;
+        font-size: 1rem;
         flex-direction: column;
         justify-content: flex-end;
         min-height: 60vh;
@@ -183,7 +188,6 @@
 
       .main-description img {
         height: 140px;
-        position: absolute;
         bottom: 0;
       }
 
@@ -482,6 +486,12 @@
   document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     hideValue();
+    document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+});
+document.addEventListener('click', function(e) {
+  const isSpeech = e.target.closest('.speech-bubble') || e.target.classList.contains('clickable');
+  if (!isSpeech) {
     document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
   }
 });
