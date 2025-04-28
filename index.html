@@ -140,31 +140,30 @@
     }
 
     .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent; /* прозрачный фон */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none; /* чтобы клики проходили сквозь фон */}
+.modal-content {
+  pointer-events: all; /* чтобы содержимое можно было нажимать */}
 
-    .modal-content {
-      background: #f0f0f0;
-      border-radius: 15px;
-      padding: 16px;
-      font-family: 'Nunito';
-      font-size: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: block;
-      max-width: 280px;
-      position: relative;
-    }
-
+  .modal-content {
+  background: #f0f0f0; /* стиль как у speech-bubble */
+  border-radius: 15px;
+  padding: 16px;
+  font-family: 'Nunito';
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 280px;
+  pointer-events: auto; /* клики по контенту работают */
+}
     @media (max-width: 768px) {
       section .centered-text h2 {
         font-size: 1.4rem;
@@ -261,6 +260,7 @@
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+  
 </head>
 
 
@@ -457,7 +457,7 @@
   
 </div>
 
-<div id="value-modal" class="modal" onclick="hideValue()">
+<div id="value-modal" class="modal" >
   <div class="modal-content" id="value-text" role="dialog" aria-modal="true"></div>
 </div>
 
@@ -518,10 +518,21 @@
     document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
   }
 });
-document.addEventListener('click', function(e) {
-  const isSpeech = e.target.closest('.speech-bubble') || e.target.classList.contains('clickable');
-  if (!isSpeech) {
+document.addEventListener('click', function (e) {
+  const clickedSpeech = e.target.closest('.speech-bubble');
+  const clickedBubbleTrigger = e.target.classList.contains('clickable');
+  const modal = document.getElementById('value-modal');
+  const modalContent = document.querySelector('.modal-content');
+  const isValueBtn = e.target.closest('.value-list > div');
+
+  // не закрываем, если клик по speech-баблу или персонажу
+  if (!clickedSpeech && !clickedBubbleTrigger) {
     document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+
+  // если модалка открыта, и клик вне контента и вне кнопок-ценностей — закрыть
+  if (modal.style.display === 'flex' && !modalContent.contains(e.target) && !isValueBtn) {
+    hideValue();
   }
 });
 
