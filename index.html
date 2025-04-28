@@ -76,12 +76,12 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 120px; /* добавлено */
+  padding-top: 80px; /* добавлено */
 }
 
     .main-title {
       font-size: 2.4rem;
-      margin: 60px 0 20px;
+      margin: 100px 0 20px;
     }
 
     .main-description {
@@ -185,7 +185,7 @@
   }
 
   section {
-  padding-top: 120px; /* чтобы текст начинался ниже меню */
+    padding-top: 160px;    /* чтобы текст начинался ниже меню */
     align-items: flex-start;
   }
 
@@ -246,7 +246,7 @@
 }
 
   .circle-hint {
-  position: fixed;
+  position: absolute;
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
@@ -301,7 +301,9 @@
   }
 
   .main-description span {
-    font-size: 0.9rem;
+  max-width: 300px;
+  align-self: center;
+
   }
 }
 
