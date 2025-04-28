@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-<title>Семейный кооператив Шляпа</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Семейный кооператив Шляпа</title>
+  <style>
     @font-face {
       font-family: 'Assya';
       src: url('AssyaFont.otf') format('opentype');
@@ -215,26 +214,26 @@
   .main-description {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 20px 0;
-    max-width: 90vw;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 20px;
+    max-width: 100%;
     margin: 0 auto;
     text-align: center;
   }
 
   .main-description img {
-    height: 120px;
+    height: 90px;
     flex: 0 0 auto;
   }
 
   .main-description span {
-    flex: 1 1 200px;
     font-size: 1rem;
-    max-width: 280px;
-    padding: 8px;
+    max-width: 60%;
+    padding: 0 10px;
+    flex: 1;
   }
 
   .circle-hint {
@@ -246,11 +245,28 @@
   }
 
   .speech-bubble {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 0.95rem;
     max-width: 240px;
     padding: 12px;
+    z-index: 9999;}
+
+  .nav-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .centered-text {
+    padding: 0 10px;
+    font-size: 1.05rem;
   }
 }
+
 
 /* Дополнительная адаптация для очень узких экранов до 480px */
 @media (max-width: 480px) {
@@ -270,7 +286,7 @@
 }
 
   </style>
-<script>
+  <script>
     function toggleSpeech(id) {
       const el = document.getElementById(id);
       const all = document.querySelectorAll('.speech-bubble');
@@ -278,125 +294,144 @@
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+  
 </head>
+
+
+
 <body>
+
 <nav>
-<button class="nav-btn" onclick="goToSlide(0)">Главная</button>
-<button class="nav-btn" onclick="goToSlide(1)">О нас</button>
-<button class="nav-btn" onclick="goToSlide(2)">День в шляпе</button>
-<button class="nav-btn" onclick="goToSlide(3)">Наши ценности</button>
-<button class="nav-btn" onclick="goToSlide(4)">Как это работает</button>
-<button class="nav-btn" onclick="goToSlide(5)">Деньги</button>
-<button class="nav-btn" onclick="goToSlide(6)">Контакты</button>
+  <button class="nav-btn" onclick="goToSlide(0)">Главная</button>
+  <button class="nav-btn" onclick="goToSlide(1)">О нас</button>
+  <button class="nav-btn" onclick="goToSlide(2)">День в шляпе</button>
+  <button class="nav-btn" onclick="goToSlide(3)">Наши ценности</button>
+  <button class="nav-btn" onclick="goToSlide(4)">Как это работает</button>
+  <button class="nav-btn" onclick="goToSlide(5)">Деньги</button>
+  <button class="nav-btn" onclick="goToSlide(6)">Контакты</button>
 </nav>
+
 <div class="container" id="slider">
-<section>
-<div class="main-banner" style="position: relative; padding-top: 80px;">
-<h1 class="main-title">Семейный кооператив Шляпа</h1>
-<div class="main-description">
-<img alt="мальчик" class="clickable" loading="lazy" onclick="toggleSpeech('speech')" src="boy.png"/>
-<span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
-<img alt="девочка" class="clickable" loading="lazy" onclick="toggleSpeech('speech2')" src="girl.png"/>
-<div class="speech-bubble" id="speech" style="top: -160px; left: -10%;">
+  <section>
+    <div class="main-banner" style="position: relative;">
+      <h1 class="main-title">Семейный кооператив Шляпа</h1>
+      <div class="main-description">
+        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" >
+        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" >
+        <div id="speech" class="speech-bubble" >
          я дима, для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свой бережный мир, чем проживу жизнь в неподходящем обществе.
         </div>
-<div class="speech-bubble" id="speech2" style="top: -60px; right: -10%; background: #f0f0ff;">
+        <div id="speech2" class="speech-bubble" >
           Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
         </div>
-<div class="circle-hint" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: 'Nunito'; font-size: 1rem; text-align: center; width: 100%;">нажми на нас</div>
-</div>
-</div>
-</section>
-<section>
-<div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px; padding-top: 80px;">
-<h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">О нас</h2>
-<p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
-        Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br/>
+        <div class="circle-hint">нажми на нас</div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">О нас</h2>
+      <p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
+        Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br>
         Ещё мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
       </p>
-<div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
-<img alt="мяч" loading="lazy" src="ball.png" style="height: 80px;"/>
-<img alt="фр1" loading="lazy" src="fr1.png" style="height: 100px;"/>
-<img alt="саша1" loading="lazy" src="sasha1.png" style="height: 130px;"/>
-</div>
-</div>
-</section>
-<section>
-<div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px; padding-top: 80px;">
-<h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">День в шляпе</h2>
-<p>
+      <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
+        <img src="ball.png" alt="мяч" style="height: 80px;" loading="lazy" >
+        <img src="fr1.png" alt="фр1" style="height: 100px;" loading="lazy" >
+        <img src="sasha1.png" alt="саша1" style="height: 130px;" loading="lazy" >
+      </div>
+    </div>
+  </section>
+  
+ 
+
+  <section>
+    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px;">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">День в шляпе</h2>
+      <p>
         Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.
       </p>
-<img alt="мишка" loading="lazy" src="mish.png" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: 1;"/>
-</div>
-</section>
-<section>
-<div class="value-list" style="position: relative; padding-top: 80px;">
-<div onclick="showValue('Равенство')">Равенство</div>
-<div onclick="showValue('Свобода')">Свобода</div>
-<div onclick="showValue('Ненасилие')">Ненасилие</div>
-<div onclick="showValue('Ответственность')">Ответственность</div>
-<div onclick="showValue('От каждо:й по способностям')">От каждо:й<br/>по способностям</div>
-<div onclick="showValue('Каждо:й по потребностям')">Каждо:й<br/>по потребностям</div>
-<div class="value-note" style="font-family: 'Nunito', sans-serif;">нажми на нас</div>
-</div>
-</section>
-<section>
-<div class="centered-text" style="; padding-top: 80px;">
-<h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Как это работает</h2>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: 1;" loading="lazy">
+    </div>
+  </section>
+  
+
+  <section>
+    <div class="value-list" style="position: relative;">
+      <div onclick="showValue('Равенство')">Равенство</div>
+      <div onclick="showValue('Свобода')">Свобода</div>
+      <div onclick="showValue('Ненасилие')">Ненасилие</div>
+      <div onclick="showValue('Ответственность')">Ответственность</div>
+      <div onclick="showValue('От каждо:й по способностям')">От каждо:й<br>по способностям</div>
+      <div onclick="showValue('Каждо:й по потребностям')">Каждо:й<br>по потребностям</div>
+      <div class="value-note" style="font-family: 'Nunito', sans-serif;">нажми на нас</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="centered-text">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Как это работает</h2>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Общий сбор — главный орган принятия решений. На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил.
       </p>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Решения принимаются по принципам прямой демократии со стремлением к консенсусу.
       </p>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Мы руководствуемся правилами, которые придумываем вместе, и ценностями.
       </p>
-<h3 style="font-family: 'Assya', cursive; font-size: 1.5rem; margin-top: 20px;">Чего вы не получите в шляпе</h3>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <h3 style="font-family: 'Assya', cursive; font-size: 1.5rem; margin-top: 20px;">Чего вы не получите в шляпе</h3>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.
       </p>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Шляпа не предоставляет услуг. У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.
       </p>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         Шляпа не занимается принуждением или манипуляциями для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний.
       </p>
-<p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
         В шляпе нет начальства и подчиненных. Все равны.
       </p>
-</div>
-</section>
-<section>
-<div class="centered-text" style="; padding-top: 80px;">
-<h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Деньги</h2>
-<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+    </div>
+  </section>
+  
+  <section>
+    <div class="centered-text">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Деньги</h2>
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
         Семейный кооператив шляпа — некоммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.
       </p>
-<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
         Бюджет кооператива формируется из взносов хозяе:к и гост:ий.
       </p>
-<p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
         Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».
       </p>
-</div>
-</section>
-<section>
-<div class="centered-text" style="text-align: center; padding-top: 40px;">
-<h3 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">Контакты</h3>
-<p style="font-size: 1.05rem;">
-<a href="https://t.me/coop_schlyapa" style="color: black; text-decoration: underline;" target="_blank">t.me/coop_schlyapa</a><br/>
-        Ада тг @ada_t<br/>
+    </div>
+  </section>
+  
+  <section>
+    <div class="centered-text" style="text-align: center; padding-top: 40px;">
+      <h3 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">Контакты</h3>
+      <p style="font-size: 1.05rem;">
+        <a href="https://t.me/coop_schlyapa" target="_blank" style="color: black; text-decoration: underline;">t.me/coop_schlyapa</a><br>
+        Ада тг @ada_t<br>
         Дима тг @rasdmi +79161558202
       </p>
-<p style="font-size: 0.95rem; margin-top: 10px;">сейчас в Москве 2025г</p>
+      <p style="font-size: 0.95rem; margin-top: 10px;">сейчас в Москве 2025г</p>
+    </div>
+  </section>
+  
 </div>
-</section>
+
+<div id="value-modal" class="modal" >
+  <div class="modal-content" id="value-text" role="dialog" aria-modal="true"></div>
 </div>
-<div class="modal" id="value-modal">
-<div aria-modal="true" class="modal-content" id="value-text" role="dialog"></div>
-</div>
+
 <script>
  function goToSlide(index) {
   const sections = document.querySelectorAll('section');
@@ -473,5 +508,6 @@ document.addEventListener('click', function (e) {
 });
 
 </script>
+
 </body>
 </html>
