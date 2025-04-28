@@ -249,9 +249,9 @@
     <div class="main-banner" style="position: relative;">
       <h1 class="main-title">Семейный кооператив Шляпа</h1>
       <div class="main-description">
-        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')">
+        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" >
         <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
-        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')">
+        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" >
         <div id="speech" class="speech-bubble" style="top: -160px; left: -10%;">
          я дима, для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свой бережный мир, чем проживу жизнь в неподходящем обществе.
         </div>
@@ -272,9 +272,9 @@
         Ещё мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
       </p>
       <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
-        <img src="ball.png" alt="мяч" style="height: 80px;">
-        <img src="fr1.png" alt="фр1" style="height: 100px;">
-        <img src="sasha1.png" alt="саша1" style="height: 130px;">
+        <img src="ball.png" alt="мяч" style="height: 80px;" loading="lazy" >
+        <img src="fr1.png" alt="фр1" style="height: 100px;" loading="lazy" >
+        <img src="sasha1.png" alt="саша1" style="height: 130px;" loading="lazy" >
       </div>
     </div>
   </section>
@@ -350,7 +350,7 @@
       <p>
         Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.
       </p>
-      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: -1;">
+      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: -1;" loading="lazy">
     </div>
   </section>
   
@@ -425,13 +425,16 @@
 </div>
 
 <div id="value-modal" class="modal" onclick="hideValue()">
-  <div class="modal-content" id="value-text"></div>
+  <div class="modal-content" id="value-text" role="dialog" aria-modal="true"></div>
 </div>
 
 <script>
-  function goToSlide(index) {
-    document.getElementById('slider').style.transform = `translateX(-${index * 100}vw)`;
+ function goToSlide(index) {
+  const sections = document.querySelectorAll('section');
+  if (sections[index]) {
+    sections[index].scrollIntoView({ behavior: 'smooth' });
   }
+}
 
   
   const values = {
@@ -476,6 +479,13 @@
   function hideValue() {
     document.getElementById('value-modal').style.display = 'none';
   }
+  document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    hideValue();
+    document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+});
+
 </script>
 
 </body>

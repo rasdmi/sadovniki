@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Семейный кооператив Шляпа</title>
   <style>
     @font-face {
@@ -13,8 +13,6 @@
     @font-face {
       font-family: 'Nunito';
       src: url('Nunito.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     * {
@@ -25,35 +23,10 @@
 
     html, body {
       height: 100%;
-      overflow: hidden;
       font-family: 'Assya', cursive;
       background: white;
-    }
-
-    h1, h2, h3, .nav-btn {
-      font-family: 'Assya', cursive;
-    }
-
-    p, .centered-text, .value-list div {
-      font-family: 'Nunito', sans-serif;
-    }
-
-    .container {
-      display: flex;
-      width: 700vw;
-      height: 100vh;
-      transition: transform 0.6s ease-in-out;
-    }
-
-    section {
-      width: 100vw;
-      height: 100vh;
-      padding: 40px;
-      overflow-y: auto;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+      font-size: 18px;
     }
 
     nav {
@@ -61,53 +34,100 @@
       top: 0;
       width: 100vw;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.9);
-      z-index: 999;
+      gap: 8px;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
       padding: 10px;
-      gap: 10px;
     }
 
     .nav-btn {
-      padding: 14px 24px;
+      padding: 10px 16px;
+      font-size: 1rem;
       border: 2px solid black;
+      border-radius: 6px;
       background: white;
-      border-radius: 10px;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-family: 'Assya';
+    }
+
+    .container {
+      display: flex;
+      width: 700vw;
+      height: 100vh;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    section {
+      width: 100vw;
+      height: 100vh;
+      padding: 80px 16px 40px;
+      flex-shrink: 0;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .main-banner {
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      position: relative;
     }
 
     .main-title {
-      font-size: 2.6rem;
-      margin-top: 50px;
-      margin-bottom: 40px;
+      font-size: 2.4rem;
+      margin: 60px 0 20px;
     }
 
     .main-description {
-      font-size: 1.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
       max-width: 90vw;
+      font-size: 1.2rem;
+      position: relative;
+      font-family: 'Nunito';
     }
 
     .main-description img {
-      height: 180px;
+      height: 250px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .main-description img:active {
+      transform: scale(0.95);
+    }
+
+    .main-description span {
+      max-width: 300px;
+    }
+
+    .speech-bubble {
+      position: absolute;
+      max-width: 280px;
+      background: #f0f0f0;
+      border-radius: 15px;
+      padding: 16px;
+      font-family: 'Nunito';
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
     }
 
     .centered-text {
-      max-width: 800px;
-      font-size: 1.4rem;
+      max-width: 700px;
+      font-size: 1.2rem;
       line-height: 1.6;
       text-align: center;
+      font-family: 'Nunito';
     }
 
     .value-list {
@@ -115,7 +135,7 @@
       flex-direction: column;
       gap: 20px;
       align-items: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       cursor: pointer;
     }
 
@@ -125,24 +145,93 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.6);
-      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      display: none;
+      padding: 20px;
     }
 
     .modal-content {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 600px;
-      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 20px 24px;
+      border-radius: 20px;
+      font-family: 'Nunito';
+      font-size: 1.1rem;
       text-align: center;
+      max-width: 480px;
+      width: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+
+    @media (max-width: 600px) {
+      html, body {
+        font-size: 16px;
+      }
+
+      .main-title {
+        font-size: 2rem;
+      }
+      
+
+      .main-description {
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 60vh;
+      }
+
+      .main-description img {
+        height: 140px;
+        position: absolute;
+        bottom: 0;
+      }
+
+      .main-description img:first-of-type {
+        left: 10px;
+      }
+
+      .main-description img:last-of-type {
+        right: 10px;
+      }
+
+      .main-description span {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+      }
+
+      .speech-bubble {
+        font-size: 0.95rem;
+        max-width: 240px;
+        padding: 12px;
+      }
+
+      .nav-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        flex: 1 1 40%;
+        text-align: center;
+      }
+
+      .centered-text {
+        padding: 0 10px;
+        font-size: 1.05rem;
+      }
     }
   </style>
+  <script>
+    function toggleSpeech(id) {
+      const el = document.getElementById(id);
+      const all = document.querySelectorAll('.speech-bubble');
+      all.forEach(b => { if (b !== el) b.style.display = 'none'; });
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </head>
+
+
+
 <body>
 
 <nav>
@@ -157,103 +246,211 @@
 
 <div class="container" id="slider">
   <section>
-    <div class="main-banner">
+    <div class="main-banner" style="position: relative;">
       <h1 class="main-title">Семейный кооператив Шляпа</h1>
       <div class="main-description">
-        <img src="boy.png" alt="мальчик">
-        <span>Эгалитарное сообщество семей. Вместе тусим и присматриваем за детьми.</span>
-        <img src="girl.png" alt="девочка">
+        <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" >
+        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" >
+        <div id="speech" class="speech-bubble" style="top: -160px; left: -10%;">
+         я дима, для меня шляпа это как детский сад для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, и лучше создам свой бережный мир, чем проживу жизнь в неподходящем обществе.
+        </div>
+        <div id="speech2" class="speech-bubble" style="top: -60px; right: -10%; background: #f0f0ff;">
+          Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
+        </div>
+        <div class="circle-hint">нажми на нас</div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h2>О нас</h2>
-      <p>Привет! Мы – сообщество семей. Нас объединяют общие ценности и желание качественно проживать вместе часть жизни. Мы совместно заботимся о детях, познаём, гуляем, творим, готовим и едим – в общем, хорошо проводим время</p>
-    <p>Наше сообщество – кооператив. Это значит, что мы совместно владеем проектом, кажд:ая из нас активно участвует в управлении сообществом и заботится о нем. Все мы – хозяй:ки шляпы – равны в принятии любых решений.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="centered-text">
-      <h2>День в шляпе</h2>
-      <p>Поскольку мы не являемся учреждением, у нас нет фиксированного расписания. Наши дни похожи на качественные семейные выходные.</p>
-      <p>Обычно мы встречаемся утром и обсуждаем, чем бы нам сегодня заняться. Тут же можем обсудить вопросы и проблемы, связанные с деятельностью или правила кооператива.</p>
-      <p>Дальше начинаются самые важные дела, совместные или индивидуальные. Кто-то лепит из глины, кто-то мастерит картонных монстров, часть людей могут пойти в парк или на футбольное поле, а кто-то, возможно, захочет приготовить обед и накормить всех желающих.</p>
-      <p>Может быть отдельные люди захотят позаниматься академическими штуками, и это отлично! Сообщество поддержит и постарается помочь ресурсами. Но академическая/«развивающая» деятельность не является приоритетной по сравнению с играми, творчеством или ковырянием в носу. Все дела равно важны.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="value-list">
-      <div onclick="showValue('Равенство')" style="font-family: Assya;">Равенство</div>
-      <div onclick="showValue('Свобода')" style="font-family: Assya;">Свобода</div>
-      <div onclick="showValue('Ненасилие')" style="font-family: Assya;">Ненасилие</div>
-      <div onclick="showValue('Ответственность')" style="font-family: Assya;">Ответственность</div>
-      <div onclick="showValue('От каждо:й по способностям')" style="font-family: Assya;">От каждо:й по способностям</div>
-      <div onclick="showValue('Каждо:й по потребностям')" style="font-family: Assya;">Каждо:й по потребностям</div>
     </div>
   </section>
   
 
   <section>
-    <div class="centered-text">
-      <h2>Как это работает</h2>
-      <p>Общий сбор — главный орган принятия решений в шляпе. </p>На Общем сборе мы обсуждаем все, что касается шляпы: </p>от совместных дел до регулировки правил.</p>
-      <p>Голос каждо:й хозяй:ки равен остальным. Решения принимаются по принципам прямой демократии со стремлением к консенсусу.</p>
-      <p>Мы руководствуемся Правилами кооператива и принципами, описанными в шляпной Конституции. </p>
-      <h3>Чего вы не получите в шляпе</h3>
-      <p>Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.</p>
-      <p>Шляпа не предоставляет услуг. У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.</p>
-      <p>Шляпа не занимается принуждением или манипуляциями для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний.</p>
-      <p>В шляпе нет начальства и подчиненных. Все равны.</p>
+    <div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">О нас</h2>
+      <p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
+        Шляпа — это кооператив, и мы все вместе владеем этим проектом, управляем и заботимся, являемся равными хозяй:ками. Такая вот форма у этой шляпы!<br>
+        Ещё мы собрались для себя и своих детей, потому что не можем терпеть насилие в любом проявлении. А уж очень хочется найти своих людей для любимых дел.
+      </p>
+      <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 20px;">
+        <img src="ball.png" alt="мяч" style="height: 80px;" loading="lazy" >
+        <img src="fr1.png" alt="фр1" style="height: 100px;" loading="lazy" >
+        <img src="sasha1.png" alt="саша1" style="height: 130px;" loading="lazy" >
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 6px;
+      }
+  
+      .nav-btn {
+        flex: 0 1 47%;
+        padding: 6px 8px;
+        font-size: 0.8rem;
+      }
+  
+      .main-banner h1.main-title {
+        font-size: 1.3rem;
+        margin-top: 60px;
+        margin-bottom: 20px;
+      }
+  
+      .main-description {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        max-width: 90vw;
+        text-align: center;
+      }
+  
+      .main-description img {
+        height: 80px;
+      }
+  
+      .main-description span {
+        flex-basis: 100%;
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      @media (max-width: 768px) {
+  section .centered-text h2 {
+    font-size: 1.4rem;
+  }
+
+  section .centered-text h3 {
+    font-size: 1.2rem;
+    margin-top: 16px;
+  }
+
+  section .centered-text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 6px auto;
+    max-width: 90vw;
+  }
+
+  section {
+    padding: 80px 20px 20px;
+    align-items: flex-start;
+  }
+}
+    }
+  </style>
+  
+
+  <section>
+    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px;">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">День в шляпе</h2>
+      <p>
+        Ну вот совсем скоро мы найдем компашку и волшебное помещение, где будем собираться вместе. Утро будем начинать с общего сбора для навигации по дню, объединения для совместных дел и вообще. А дальше сколько интересов — столько и дел: играть, читать, заниматься академ. дисциплинами, творчеством, прогулочками, обедами и т.п. Наша общая цель — помогать и поддерживать друг друга, как можем. И мы помним про отсутствие намерений, и что никакая деятельность не является приоритетной по сравнению с другой. Все дела равно важны.
+      </p>
+      <img src="mish.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: -1;" loading="lazy">
+    </div>
+  </section>
+  
+
+  <section>
+    <div class="value-list" style="position: relative;">
+      <div onclick="showValue('Равенство')">Равенство</div>
+      <div onclick="showValue('Свобода')">Свобода</div>
+      <div onclick="showValue('Ненасилие')">Ненасилие</div>
+      <div onclick="showValue('Ответственность')">Ответственность</div>
+      <div onclick="showValue('От каждо:й по способностям')">От каждо:й<br>по способностям</div>
+      <div onclick="showValue('Каждо:й по потребностям')">Каждо:й<br>по потребностям</div>
+      <div class="value-note" style="font-family: 'Nunito', sans-serif;">нажми на нас</div>
     </div>
   </section>
 
   <section>
     <div class="centered-text">
-      <h2>Деньги</h2>
-      <p>Семейный кооператив шляпа — не коммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.</p>
-    <p>Бюджет кооператива формируется из взносов хозяе:к и гост:ий.</p>
-    <p>Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».</p>
-    <p>Размер взноса для гост:ий устанавливается решением кооператива.</p>
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Как это работает</h2>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Общий сбор — главный орган принятия решений. На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Решения принимаются по принципам прямой демократии со стремлением к консенсусу.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Мы руководствуемся правилами, которые придумываем вместе, и ценностями.
+      </p>
+      <h3 style="font-family: 'Assya', cursive; font-size: 1.5rem; margin-top: 20px;">Чего вы не получите в шляпе</h3>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа не предоставляет услуг. У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        Шляпа не занимается принуждением или манипуляциями для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+        В шляпе нет начальства и подчиненных. Все равны.
+      </p>
     </div>
   </section>
-
+  
   <section>
     <div class="centered-text">
-      <h3>Контакты</h3>
-      <p>Ада тг @ada_t<br>Дима тг @rasdmi +79161558202</p>
-      <p>сейчас в Москве 2025г</p>
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem;">Деньги</h2>
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Семейный кооператив шляпа — некоммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.
+      </p>
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Бюджет кооператива формируется из взносов хозяе:к и гост:ий.
+      </p>
+      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+        Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».
+      </p>
     </div>
   </section>
+  
+  <section>
+    <div class="centered-text" style="text-align: center; padding-top: 40px;">
+      <h3 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 20px;">Контакты</h3>
+      <p style="font-size: 1.05rem;">
+        <a href="https://t.me/coop_schlyapa" target="_blank" style="color: black; text-decoration: underline;">t.me/coop_schlyapa</a><br>
+        Ада тг @ada_t<br>
+        Дима тг @rasdmi +79161558202
+      </p>
+      <p style="font-size: 0.95rem; margin-top: 10px;">сейчас в Москве 2025г</p>
+    </div>
+  </section>
+  
 </div>
 
 <div id="value-modal" class="modal" onclick="hideValue()">
-  <div class="modal-content" id="value-text"></div>
+  <div class="modal-content" id="value-text" role="dialog" aria-modal="true"></div>
 </div>
 
 <script>
-  function goToSlide(index) {
-    document.getElementById('slider').style.transform = `translateX(-${index * 100}vw)`;
+ function goToSlide(index) {
+  const sections = document.querySelectorAll('section');
+  if (sections[index]) {
+    sections[index].scrollIntoView({ behavior: 'smooth' });
   }
+}
 
   
   const values = {
   'Равенство': `
     <span style="font-family: 'Nunito'; font-size: 1.1rem;">
-      Кажд:ая из нас имеет равный голос в принятии решений кооператива. Потребности, цели и интересы каждо:й из нас равно важны. При этом сообщество старается предоставить каждо:й равный доступ к ресурсам и к механизмам сообщества.
+      Мы равные хозяй:ки Шляпы, имеем равноценные голоса. Потребности, цели и интересы каждо:й из нас равно важны. Мы старается предоставить каждо:й равный доступ к ресурсам и к механизмам сообщества.
     </span>
   `,
   'Свобода': `
     <span style="font-family: 'Nunito'; font-size: 1.1rem;">
-      Каждый человек может заниматься чем угодно, если это не пересекает чьих-либо границ, не мешает чьей-либо деятельности и не нарушает правил кооператива. Никто не может принуждать друг:ую к чему-либо.
+      Кажд:ая участни:ца сообщества может заниматься, чем хочет, если это не нарушает правил кооператива. Никто не может принуждать друг:ую к чему-либо.
     </span>
   `,
   'Ненасилие': `
     <span style="font-family: 'Nunito'; font-size: 1.1rem;">
-      Мы уважительно относимся к каждой личности. В общении мы не имеем скрытых целей, не прибегаем к манипуляциям и обману. Обратная связь возможна только по запросу и только бережная.
+      Мы бережно относимся к каждой личности. В общении мы не имеем скрытых целей, не прибегаем к манипуляциям и обману. Мы слышим и не нарушаем границ друг друга. 
     </span>
   `,
   'Ответственность': `
@@ -268,7 +465,7 @@
   `,
   'Каждо:й по потребностям': `
     <span style="font-family: 'Nunito'; font-size: 1.1rem;">
-      Кооператив искренне старается слышать потребности каждо:й хозяй:ки и удовлетворять их.
+      Кооператив(мы вместе) искренне старается слышать потребности каждо:й хозяй:ки и удовлетворять их.
     </span>
   `
 };
@@ -282,6 +479,13 @@
   function hideValue() {
     document.getElementById('value-modal').style.display = 'none';
   }
+  document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    hideValue();
+    document.querySelectorAll('.speech-bubble').forEach(el => el.style.display = 'none');
+  }
+});
+
 </script>
 
 </body>
