@@ -214,26 +214,26 @@
   .main-description {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 20px 0;
-    max-width: 90vw;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 20px;
+    max-width: 100%;
     margin: 0 auto;
     text-align: center;
   }
 
   .main-description img {
-    height: 120px;
+    height: 90px;
     flex: 0 0 auto;
   }
 
   .main-description span {
-    flex: 1 1 200px;
     font-size: 1rem;
-    max-width: 280px;
-    padding: 8px;
+    max-width: 60%;
+    padding: 0 10px;
+    flex: 1;
   }
 
   .circle-hint {
@@ -249,7 +249,20 @@
     max-width: 240px;
     padding: 12px;
   }
+
+  .nav-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .centered-text {
+    padding: 0 10px;
+    font-size: 1.05rem;
+  }
 }
+
 
 /* Дополнительная адаптация для очень узких экранов до 480px */
 @media (max-width: 480px) {
