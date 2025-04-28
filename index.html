@@ -30,26 +30,29 @@
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      width: 100vw;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.95);
-      z-index: 1000;
-      padding: 10px;
-    }
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+  padding: 6px;
+}
 
-    .nav-btn {
-      padding: 10px 16px;
-      font-size: 1rem;
-      border: 2px solid black;
-      border-radius: 6px;
-      background: white;
-      cursor: pointer;
-      font-family: 'Assya';
+.nav-btn {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border: 2px solid black;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Assya';
+  flex: 1 1 40%;
+  text-align: center;
+}
     }
 
     .container {
@@ -62,7 +65,7 @@
     section {
       width: 100%;
       min-height: 100vh;
-      padding: 100px 16px 40px;
+      padding: 90px 16px 40px;
       box-sizing: border-box;
       overflow-y: auto;
       display: flex;
@@ -86,10 +89,12 @@
 
     .main-description {
       display: flex;
+flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      max-width: 90vw;
+flex-wrap: nowrap;
+      gap 10px;
+      max-width: 100%;
       font-size: 1.2rem;
       position: relative;
       font-family: 'Nunito';
@@ -106,7 +111,11 @@
     }
 
     .main-description span {
-      max-width: 300px;
+  flex: 1;
+  font-size: 1rem;
+  max-width: 70%;
+  padding: 0 8px;
+
     }
 
     .speech-bubble {
