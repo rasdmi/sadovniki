@@ -208,6 +208,24 @@
         padding: 6px 10px;
       }
     }
+    /* Плавная анимация появления модалки / speech bubble */
+.modal, .speech-bubble {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Анимация кнопок */
+.nav-btn {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.nav-btn:hover {
+  background: #eee;
+  transform: scale(1.02);
+}
+.nav-btn:active {
+  background: #ddd;
+  transform: scale(0.98);
+}
   </style>
 
   <script>
@@ -238,7 +256,58 @@
 
       sections.forEach(section => observer.observe(section));
     });
-  </script>
+    
+    
+  function toggleSpeech(id) {
+    const el = document.getElementById(id);
+    const all = document.querySelectorAll('.speech-bubble');
+    all.forEach(b => {
+      if (b !== el) {
+        b.style.opacity = 0;
+        setTimeout(() => b.style.display = 'none', 200);
+      }
+    });
+    if (el.style.display === 'block') {
+      el.style.opacity = 0;
+      setTimeout(() => el.style.display = 'none', 200);
+    } else {
+      el.style.display = 'block';
+      setTimeout(() => el.style.opacity = 1, 10);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const navHeight = document.querySelector('nav')?.offsetHeight || 100;
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('section').forEach(section => {
+        section.style.paddingTop = (navHeight + 20) + 'px';
+      });
+    }
+
+    // Анимация появления секций
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+
+    // Плавный скролл по секциям при клике на nav-btn
+    document.querySelectorAll('.nav-btn').forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        const container = document.querySelector('.container');
+        container.scrollTo({
+          left: window.innerWidth * index,
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+</script>
+
 </head>
 
   
