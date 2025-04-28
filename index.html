@@ -22,11 +22,11 @@
     }
 
     html, body {
-  min-height: 100%;
-  font-family: 'Assya', cursive;
-  background: white;
-  font-size: 18px;
-  overflow-x: hidden;
+      min-height: 100%;
+      font-family: 'Assya', cursive;
+      background: white;
+      font-size: 18px;
+      overflow-x: hidden;
     }
 
     nav {
@@ -60,16 +60,15 @@
     }
 
     section {
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px 16px 40px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+      width: 100%;
+      min-height: 100vh;
+      padding: 100px 16px 40px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .main-banner {
       text-align: center;
@@ -155,16 +154,38 @@
     }
 
     .modal-content {
-  background: #f0f0f0;
-  border-radius: 15px;
-  padding: 16px;
-  font-family: 'Nunito';
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: block;
-  max-width: 280px;
-  position: relative;
+      background: #f0f0f0;
+      border-radius: 15px;
+      padding: 16px;
+      font-family: 'Nunito';
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: block;
+      max-width: 280px;
+      position: relative;
+    }
 
+    @media (max-width: 768px) {
+      section .centered-text h2 {
+        font-size: 1.4rem;
+      }
+
+      section .centered-text h3 {
+        font-size: 1.2rem;
+        margin-top: 16px;
+      }
+
+      section .centered-text p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin: 6px auto;
+        max-width: 90vw;
+      }
+
+      section {
+        padding: 80px 20px 20px;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 600px) {
@@ -175,12 +196,8 @@
       .main-title {
         font-size: 2rem;
       }
-      
 
-      .main-description span {
-        text-align: center;
-        max-width: 90vw;
-        font-size: 1rem;
+      .main-description {
         flex-direction: column;
         justify-content: flex-end;
         min-height: 60vh;
@@ -188,21 +205,16 @@
 
       .main-description img {
         height: 140px;
-        bottom: 0;
-      }
-
-      .main-description img:first-of-type {
-        left: 10px;
-      }
-
-      .main-description img:last-of-type {
-        right: 10px;
+        position: relative;
       }
 
       .main-description span {
         position: relative;
         z-index: 2;
         padding: 20px;
+        text-align: center;
+        max-width: 90vw;
+        font-size: 1rem;
       }
 
       .speech-bubble {
@@ -223,6 +235,23 @@
         font-size: 1.05rem;
       }
     }
+
+    @media (max-width: 480px) {
+      .modal-content {
+        max-width: 90vw;
+        font-size: 1rem;
+        padding: 16px;
+      }
+
+      .main-description img {
+        height: 100px;
+      }
+
+      .main-description span {
+        font-size: 0.9rem;
+      }
+    }
+
   </style>
   <script>
     function toggleSpeech(id) {
