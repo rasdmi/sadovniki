@@ -322,21 +322,32 @@ border-radius: 999px;
         </div>
       
       
-      <div class="main-description">
-        <div class="boy-wrapper">
-          <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy">
-          <div class="circle-hint">нажми<br>на нас</div>
-        </div>
+        <div class="main-description" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; text-align: center;">
+
+          <!-- Мальчик + "нажми" -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" style="height: 250px;">
+            <div class="circle-hint" style="margin-top: 12px;">-нажми-</div>
+          </div>
         
-        <span>Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
-        <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" >
-        <div id="speech" class="speech-bubble" >
-         Приветы, я, Дима, делаю Шляпу для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, вот и создаю, что хочу.
-        </div>
-        <div id="speech2" class="speech-bubble" >
-          Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
-        </div>
-      
+          <!-- Текст по центру -->
+          <span style="max-width: 300px; font-size: 1.2rem;">Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+        
+          <!-- Девочка + "нажми" -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" style="height: 250px;">
+            <div class="circle-hint" style="margin-top: 12px;">-нажми-</div>
+          </div>
+        
+          <!-- Пузырьки -->
+          <div id="speech" class="speech-bubble" style="max-width: 320px;">
+            Приветы, я Дима, делаю Шляпу для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, вот и создаю, что хочу.
+          </div>
+          <div id="speech2" class="speech-bubble" style="max-width: 320px;">
+            Привет, я Ада. Я люблю своих детей, люблю проводить время с хорошими людьми и терпеть не могу насилие и иерархию. Мои дети, Миша и Саша, растут как трава — крепкие, сочные и экспансивные :) Мы хотим строить сообщество классных и свободных!
+          </div>
+        
+        
       </div>
     </div>
   </section>
@@ -345,7 +356,7 @@ border-radius: 999px;
   <section>
     <div class="main-description" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-bottom: 150px;">
       <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 0px;">О нас</h2>
-      <p style="max-width: 480px; text-align: center; font-size: 1.1rem; line-height: 1.6;">
+      <p style="max-width: 480px; text-align: flex-end; font-size: 1.1rem; line-height: 1.6;">
         Мы не просто кооператив, <br> а люди, которым очень нужно.
         <br><br>
         Мы не ищем альтернативу, а создаем своё.
@@ -366,14 +377,23 @@ border-radius: 999px;
  
 
   <section>
-    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px;">
+    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px; text-align: left;">
       <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 0px;">День в шляпе</h2>
       <p>
-        От Димы: <br>Мой идеальный день в Шляпе состоит из простых вещей, которые станут счастливыми общими ритуалами. <br>Утром мне обязательно нужно покормить друзей и близких, люблю готовить вафли. <br>Надеюсь у нас в Шляпе будет окно на кухне и роскошный обеденный стол. <br>После завтрака хорошо поделать что-то своими руками, написать письмо, картину, собрать коллаж или букет. <br>А после собрать компанию на бережный футбол, это когда ради общего удовольствия от процесса. <br>Затем обед и прогулочка по бульвару. А в завершении дня очень нужно помузицировать, спеть хором или послушать и потанцевать. 
-        <br>(все дела в шляпе исключительно добровольные)</p>
+        <br> От Димы: <br>
+        Мой идеальный день в Шляпе состоит из простых вещей, которые станут счастливыми общими ритуалами. <br>
+        Утром мне обязательно нужно покормить друзей и близких, люблю готовить вафли. <br>
+        Надеюсь, у нас в Шляпе будет окно на кухне и роскошный обеденный стол. <br>
+        После завтрака хорошо поделать что-то своими руками: написать письмо, картину, собрать коллаж или букет. <br>
+        А потом — собрать компанию на бережный футбол, это когда ради общего удовольствия от процесса. <br>
+        Затем — обед и прогулочка по бульвару. <br>
+        А в завершении дня — помузицировать, спеть хором или просто послушать и потанцевать. <br>
+        <br>(все дела в Шляпе исключительно добровольные)
+      </p>
       <img src="boy1.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: 1;" loading="lazy">
     </div>
   </section>
+  
   
 
   <section>
@@ -390,47 +410,49 @@ border-radius: 999px;
   </section>
 
   <section>
-    <div class="centered-text">
+    <div class="centered-text" style="text-align: left;">
       <h2 style="font-family: 'Assya', cursive; margin-bottom: 0px; font-size: 2rem;">Как это работает</h2>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Общий сбор — главный орган принятия решений. На Общем сборе мы обсуждаем все, что касается шляпы: от совместных дел до регулировки правил.
       </p>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Решения принимаются по принципам прямой демократии со стремлением к консенсусу.
       </p>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Мы руководствуемся правилами, которые придумываем вместе, и ценностями.
       </p>
       <h3 style="font-family: 'Assya', cursive; font-size: 1.5rem; margin-top: 20px;">Чего вы не получите в шляпе</h3>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Шляпа – не учреждение. У нас нет формальной структуры. Мы в первую очередь сообщество людей.
       </p>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Шляпа не предоставляет услуг. У нас нет клиенто:к. Мы работаем на сообщество, в интересах каждо:й хозяйки и сообщества в целом.
       </p>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         Шляпа не занимается принуждением или манипуляциями для освоения людьми какой-нибудь программы или развития каких-нибудь навыков или знаний.
       </p>
-      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1rem; line-height: 1.5; max-width: 700px;">
         В шляпе нет начальства и подчиненных. Все равны.
       </p>
     </div>
   </section>
   
+  
   <section>
-    <div class="centered-text">
+    <div class="centered-text" style="text-align: left;">
       <h2 style="font-family: 'Assya', cursive; margin-bottom: 0px; font-size: 2rem;">Деньги</h2>
-      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
-        Семейный кооператив шляпа — некоммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.
+      <p style="font-size: 1.05rem; max-width: 700px;">
+        Семейный кооператив Шляпа — некоммерческий проект. Мы стремимся получать ровно столько ресурсов, сколько необходимо и достаточно для комфортной жизни сообщества.
       </p>
-      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1.05rem; max-width: 700px;">
         Бюджет кооператива формируется из взносов хозяе:к и гост:ий.
       </p>
-      <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+      <p style="font-size: 1.05rem; max-width: 700px;">
         Взнос каждой семьи-хозяйки устанавливается индивидуально, исходя из принципа «от каждо:й по способностям».
       </p>
     </div>
   </section>
+  
   
   <section>
     <div class="centered-text" style="text-align: center; padding-top: 40px;">
