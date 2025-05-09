@@ -324,23 +324,18 @@ border-radius: 999px;
         </div>
       
       
-        <div class="main-description" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; text-align: center;">
-
-          <!-- Мальчик + "нажми" -->
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="boy.png" alt="мальчик" class="clickable" onclick="toggleSpeech('speech')" loading="lazy" style="height: 250px;">
-            <div class="circle-hint" style="margin-top: 12px;">-нажми-</div>
+        <div class="main-description" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; text-align: center; flex-direction: row;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <img src="boy.png" alt="мальчик" class="clickable character-img" onclick="toggleSpeech('speech')" loading="lazy">
+            <div class="circle-hint" style="margin-top: 8px;">нажми</div>
           </div>
         
-          <!-- Текст по центру -->
-          <span style="max-width: 300px; font-size: 1.2rem;">Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
+          <span style="max-width: 240px; font-size: 1.1rem; flex-shrink: 1;">Сообщество классных, бережных и равных, для желаемой жизни в компании похожих.</span>
         
-          <!-- Девочка + "нажми" -->
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="girl.png" alt="девочка" class="clickable" onclick="toggleSpeech('speech2')" loading="lazy" style="height: 250px;">
-            <div class="circle-hint" style="margin-top: 12px;">-нажми-</div>
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <img src="girl.png" alt="девочка" class="clickable character-img" onclick="toggleSpeech('speech2')" loading="lazy">
+            <div class="circle-hint" style="margin-top: 8px;">нажми</div>
           </div>
-        
           <!-- Пузырьки -->
           <div id="speech" class="speech-bubble" style="max-width: 320px;">
             Приветы, я Дима, делаю Шляпу для нас с дочерью. я люблю гулять, играть и творить в хорошей компании, Фроня тоже. Я очень чувствителен к любому насилию, вот и создаю, что хочу.
