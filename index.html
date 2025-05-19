@@ -318,12 +318,6 @@ border-radius: 999px;
   <section>
     <div class="main-banner" style="position: relative; padding-top: 40;">
       <h2 style="font-family: 'Assya', cursive; margin-bottom: 0px; font-size: 2rem;">Семейный кооператив Шляпа</h1>
-        <div style="background: rgba(0,0,0,0.05); border: 2px solid black; border-radius: 12px; padding: 12px 16px; margin: 10px 0 30px; text-align: center; font-family: 'Nunito'; font-size: 1rem;">
-          Наш тг<br>
-          <a href="https://t.me/coop_schlyapa/9" target="_blank" style="color: #0000ee; text-decoration: underline;">https://t.me/coop_schlyapa</a>
-        </div>
-      
-      
         <div class="main-description" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; text-align: center; flex-direction: row;">
           <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
             <img src="boy.png" alt="мальчик" class="clickable character-img" onclick="toggleSpeech('speech')" loading="lazy">
@@ -374,9 +368,9 @@ border-radius: 999px;
  
 
   <section>
-    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 100px; text-align: left;">
-      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 0px;">День в шляпе</h2>
-      <p>
+    <div class="centered-text" style="position: relative; font-size: 1.1rem; line-height: 1.5; padding-bottom: 140px; text-align: left;" id="dayTextBlock">
+      <h2 style="font-family: 'Assya', cursive; font-size: 2rem; margin-bottom: 10px;">День в шляпе</h2>
+      <p id="dayText">
         <br> От Димы: <br>
         Мой идеальный день в Шляпе состоит из простых вещей, которые станут счастливыми общими ритуалами. <br>
         Утром мне обязательно нужно покормить друзей и близких, люблю готовить вафли. <br>
@@ -387,9 +381,15 @@ border-radius: 999px;
         А в завершении дня — помузицировать, спеть хором или просто послушать и потанцевать. <br>
         <br>(все дела в Шляпе исключительно добровольные)
       </p>
-      <img src="boy1.png" alt="мишка" style="position: absolute; bottom: 0; right: 0px; height: 130px; z-index: 1;" loading="lazy">
+  
+      <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 16px;">
+        <img src="girl2.png" alt="Ада" class="clickable" onclick="showDay('ada')" style="height: 120px; flex-shrink: 0;" loading="lazy">
+        <div class="circle-hint" style="font-size: 0.95rem; padding: 6px 14px;">нажми на нас</div>
+        <img src="boy1.png" alt="Дима" class="clickable" onclick="showDay('dima')" style="height: 120px; flex-shrink: 0;" loading="lazy">
+      </div>
     </div>
   </section>
+  
   
   
 
@@ -543,6 +543,29 @@ document.addEventListener('click', function (e) {
   }
 });
 
+</script>
+<script>
+  function showDay(name) {
+    const textEl = document.getElementById('dayText');
+    if (name === 'ada') {
+      textEl.innerHTML = `
+        <br> от Ады: <br>
+        Хочу приходить в любимое уютное пространство, ворчать, что вчера кто-то не положил тапочки на место, наводить порядочек, печь пирог, узнавать у всех, как их дела, читать с самыми маленькими, мастерить всякое из любви и палок, ходить на прогулочки, спорить, дуть на коленки, гладить собак, признаваться в любви, пытаться запрещать сладкое, но уступать 🙈, наводить порядок, идти домой.
+      `;
+    } else {
+      textEl.innerHTML = `
+        <br> От Димы: <br>
+        Мой идеальный день в Шляпе состоит из простых вещей, которые станут счастливыми общими ритуалами. <br>
+        Утром мне обязательно нужно покормить друзей и близких, люблю готовить вафли. <br>
+        Надеюсь, у нас в Шляпе будет окно на кухне и роскошный обеденный стол. <br>
+        После завтрака хорошо поделать что-то своими руками: написать письмо, картину, собрать коллаж или букет. <br>
+        А потом — собрать компанию на бережный футбол, это когда ради общего удовольствия от процесса. <br>
+        Затем — обед и прогулочка по бульвару. <br>
+        А в завершении дня — помузицировать, спеть хором или просто послушать и потанцевать. <br>
+        <br>(все дела в Шляпе исключительно добровольные)
+      `;
+    }
+  }
 </script>
 
 </body>
